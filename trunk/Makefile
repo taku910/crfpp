@@ -792,10 +792,6 @@ dist-hook:
 	  find $(distdir) -name .svn  | xargs rm -fr; \
 	done
 
-win:
-	(cd src; rm -f *.exe *.obj *.dll)
-#	(cd src; wcmd /c make.bat)
-
 win-dist:
 	rm -f CRF++-0.55.zip
 	mkdir -p CRF++-0.55/doc
@@ -823,7 +819,6 @@ dist-all-package:
 	$(MAKE) clean
 	$(MAKE) script-clean
 	$(MAKE) script-dist
-	$(MAKE) win
 	$(MAKE) win-dist
 
 script-dist:
@@ -845,10 +840,8 @@ script-clean:
 	(cd java; $(MAKE) clean;)
 
 export-package:
-#	./upload.pl -p crfpp -n crfpp        -r 0.55 -f CRF++-0.55.tar.gz
-#	./upload.pl -p crfpp -n crfpp-win32  -r 0.55 -f CRF++-0.55.zip
-	scp doc/*.html sf:public_html/crfpp/
-	scp doc/*.css sf:public_html/crfpp/
+	python googlecode_upload.py -p crfpp -s crfpp      -u taku@chasen.org -w `cat ~/.googlecode_upload_password` CRF++-0.55.tar.gz
+	python googlecode_upload.py -p crfpp -s crfpp-win  -u taku@chasen.org -w `cat ~/.googlecode_upload_password` CRF++-0.55.zip
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
