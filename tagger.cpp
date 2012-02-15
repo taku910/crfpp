@@ -255,6 +255,7 @@ bool TaggerImpl::set_model(const Model &model) {
   feature_index_ = model_impl->feature_index();
   nbest_ = model_impl->nbest();
   vlevel_ = model_impl->vlevel();
+  ysize_ = feature_index_->ysize();
   return true;
 }
 
