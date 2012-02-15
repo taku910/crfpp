@@ -33,6 +33,10 @@ class ModelImpl : public Model {
   Tagger *createTagger() const;
   const char* what() { return what_.str(); }
 
+  unsigned int nbest() const { return nbest_; }
+  unsigned int vlevel() const { return vlevel_; }
+  FeatureIndex *feature_index() const { return feature_index_.get(); }
+
  private:
   bool open(const Param &param);
 
@@ -72,6 +76,8 @@ class TaggerImpl : public Tagger {
   bool         open(const Param &param);
   bool         open(const char *argv);
   bool         open(int argc, char **argv);
+
+  bool         set_model(const Model &model);
 
 
   int          eval();

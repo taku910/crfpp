@@ -108,12 +108,17 @@ void crfpp_destroy(crfpp_t *c) {
   delete tagger;
 }
 
-bool     crfpp_add2(crfpp_t* c, size_t s, const char **line) {
-  return reinterpret_cast<CRFPP::Tagger *>(c)->add(s, line);
+int      crfpp_set_model(crfpp_t *c, crfpp_model_t *model) {
+  return static_cast<int>(reinterpret_cast<CRFPP::Tagger *>(c)->set_model(
+                              reinterpret_cast<const CRFPP::Model &>(*model)));
 }
 
-bool     crfpp_add(crfpp_t* c, const char*s) {
-  return reinterpret_cast<CRFPP::Tagger *>(c)->add(s);
+int      crfpp_add2(crfpp_t* c, size_t s, const char **line) {
+  return static_cast<int>(reinterpret_cast<CRFPP::Tagger *>(c)->add(s, line));
+}
+
+int      crfpp_add(crfpp_t* c, const char*s) {
+  return static_cast<int>(reinterpret_cast<CRFPP::Tagger *>(c)->add(s));
 }
 
 size_t   crfpp_size(crfpp_t* c) {
@@ -210,20 +215,20 @@ double   crfpp_Z(crfpp_t* c) {
   return reinterpret_cast<CRFPP::Tagger *>(c)->Z();
 }
 
-bool     crfpp_parse(crfpp_t* c) {
-  return reinterpret_cast<CRFPP::Tagger *>(c)->parse();
+int      crfpp_parse(crfpp_t* c) {
+  return static_cast<int>(reinterpret_cast<CRFPP::Tagger *>(c)->parse());
 }
 
-bool     crfpp_empty(crfpp_t* c) {
-  return reinterpret_cast<CRFPP::Tagger *>(c)->empty();
+int      crfpp_empty(crfpp_t* c) {
+  return static_cast<int>(reinterpret_cast<CRFPP::Tagger *>(c)->empty());
 }
 
-bool     crfpp_clear(crfpp_t* c) {
-  return reinterpret_cast<CRFPP::Tagger *>(c)->clear();
+int      crfpp_clear(crfpp_t* c) {
+  return static_cast<int>(reinterpret_cast<CRFPP::Tagger *>(c)->clear());
 }
 
-bool     crfpp_next(crfpp_t* c) {
-  return reinterpret_cast<CRFPP::Tagger *>(c)->next();
+int      crfpp_next(crfpp_t* c) {
+  return static_cast<int>(reinterpret_cast<CRFPP::Tagger *>(c)->next());
 }
 
 const char*   crfpp_yname(crfpp_t* c, size_t i) {
