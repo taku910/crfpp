@@ -237,6 +237,27 @@ void TaggerImpl::close() {
   }
 }
 
+bool TaggerImpl::set_model(const Model &model) {
+  if (mode_ == TEST) {
+    // feature_index_ => took the owner
+    // allocator_ => reuse
+    delete feature_index_;
+  } else if (mode_ == LEARN) {
+    // feature_index_ => did not take the owner
+    // allocator_ => did not take the owner.
+    allocator_ = new Allocator;
+  } else if (mode_ == TEST_SHARED) {
+    // feature_index_ => did not take the owner
+    // allocator_ => reuse
+  }
+  mode_ = TEST_SHARED;
+  const ModelImpl *model_impl = dynamic_cast<const ModelImpl *>(&model);
+  feature_index_ = model_impl->feature_index();
+  nbest_ = model_impl->nbest();
+  vlevel_ = model_impl->vlevel();
+  return true;
+}
+
 bool TaggerImpl::add2(size_t size, const char **column, bool copy) {
   const size_t xsize = feature_index_->xsize();
 

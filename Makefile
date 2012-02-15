@@ -135,7 +135,7 @@ AR = ar
 AUTOCONF = ${SHELL} /home/taku/proj/crfpp/missing --run autoconf
 AUTOHEADER = ${SHELL} /home/taku/proj/crfpp/missing --run autoheader
 AUTOMAKE = ${SHELL} /home/taku/proj/crfpp/missing --run automake-1.11
-AWK = gawk
+AWK = mawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -O3 -Wall
@@ -148,6 +148,7 @@ CXXFLAGS = -O3 -Wall
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
+DLLTOOL = false
 DSYMUTIL = 
 DUMPBIN = 
 ECHO_C = 
@@ -171,6 +172,7 @@ LIPO =
 LN_S = ln -s
 LTLIBOBJS = 
 MAKEINFO = ${SHELL} /home/taku/proj/crfpp/missing --run makeinfo
+MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/nm -B
 NMEDIT = 
@@ -189,13 +191,14 @@ PATH_SEPARATOR = :
 RANLIB = ranlib
 SED = /bin/sed
 SET_MAKE = 
-SHELL = /bin/sh
+SHELL = /bin/bash
 STRIP = strip
-VERSION = 0.55
+VERSION = 0.56
 abs_builddir = /home/taku/proj/crfpp
 abs_srcdir = /home/taku/proj/crfpp
 abs_top_builddir = /home/taku/proj/crfpp
 abs_top_srcdir = /home/taku/proj/crfpp
+ac_ct_AR = ar
 ac_ct_CC = gcc
 ac_ct_CXX = g++
 ac_ct_DUMPBIN = 
@@ -229,7 +232,6 @@ libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
 localstatedir = ${prefix}/var
-lt_ECHO = echo
 mandir = ${datarootdir}/man
 mkdir_p = /bin/mkdir -p
 oldincludedir = /usr/include
@@ -793,24 +795,24 @@ dist-hook:
 	done
 
 win-dist:
-	rm -f CRF++-0.55.zip
-	mkdir -p CRF++-0.55/doc
-	mkdir -p CRF++-0.55/example
-	mkdir -p CRF++-0.55/sdk
-	cp -f crf_learn.exe CRF++-0.55
-	cp -f crf_test.exe CRF++-0.55
-	cp -f libcrfpp.dll CRF++-0.55
-	cp -f libcrfpp.lib CRF++-0.55/sdk
-	cp -f crfpp.h CRF++-0.55/sdk
-#	cp -f sdk/model CRF++-0.55/sdk
-	cp -f sdk/example.cpp CRF++-0.55/sdk	
-	cp -fr doc/*.html doc/*.css doc/doxygen CRF++-0.55/doc
-	cp -f README COPYING AUTHORS LGPL BSD CRF++-0.55
-	cp -fr example/* CRF++-0.55/example
-	find CRF++-0.55 -name CVS | xargs rm -rf
-	find CRF++-0.55 -name .svn | xargs rm -rf	
-	zip -r CRF++-0.55.zip CRF++-0.55
-	rm -fr CRF++-0.55
+	rm -f CRF++-0.56.zip
+	mkdir -p CRF++-0.56/doc
+	mkdir -p CRF++-0.56/example
+	mkdir -p CRF++-0.56/sdk
+	cp -f crf_learn.exe CRF++-0.56
+	cp -f crf_test.exe CRF++-0.56
+	cp -f libcrfpp.dll CRF++-0.56
+	cp -f libcrfpp.lib CRF++-0.56/sdk
+	cp -f crfpp.h CRF++-0.56/sdk
+#	cp -f sdk/model CRF++-0.56/sdk
+	cp -f sdk/example.cpp CRF++-0.56/sdk	
+	cp -fr doc/*.html doc/*.css doc/doxygen CRF++-0.56/doc
+	cp -f README COPYING AUTHORS LGPL BSD CRF++-0.56
+	cp -fr example/* CRF++-0.56/example
+	find CRF++-0.56 -name CVS | xargs rm -rf
+	find CRF++-0.56 -name .svn | xargs rm -rf	
+	zip -r CRF++-0.56.zip CRF++-0.56
+	rm -fr CRF++-0.56
 
 dist-all-package:
 	(test -f Makefile) && $(MAKE) distclean
@@ -823,14 +825,14 @@ dist-all-package:
 
 script-dist:
 	for subdir in perl ruby python java; do \
-	  rm -fr CRF++-$${subdir}-0.55; \
-	  mkdir CRF++-$${subdir}-0.55; \
-	  cp -r $${subdir}/* CRF++-$${subdir}-0.55; \
-	  cp -r doc/bindings.html  CRF++-$${subdir}-0.55; \
-	  find ./CRF++-$${subdir}-0.55 -type d -name CVS | xargs rm -fr; \
-	  rm -f CRF++-$${subdir}-0.55/*~; \
-	  tar zcfv CRF++-$${subdir}-0.55.tar.gz CRF++-$${subdir}-0.55; \
-	  rm -fr CRF++-$${subdir}-0.55; \
+	  rm -fr CRF++-$${subdir}-0.56; \
+	  mkdir CRF++-$${subdir}-0.56; \
+	  cp -r $${subdir}/* CRF++-$${subdir}-0.56; \
+	  cp -r doc/bindings.html  CRF++-$${subdir}-0.56; \
+	  find ./CRF++-$${subdir}-0.56 -type d -name CVS | xargs rm -fr; \
+	  rm -f CRF++-$${subdir}-0.56/*~; \
+	  tar zcfv CRF++-$${subdir}-0.56.tar.gz CRF++-$${subdir}-0.56; \
+	  rm -fr CRF++-$${subdir}-0.56; \
 	done
 
 script-clean:
@@ -840,8 +842,8 @@ script-clean:
 	(cd java; $(MAKE) clean;)
 
 export-package:
-	python googlecode_upload.py -p crfpp -s crfpp      -u taku@chasen.org -w `cat ~/.googlecode_upload_password` CRF++-0.55.tar.gz
-	python googlecode_upload.py -p crfpp -s crfpp-win  -u taku@chasen.org -w `cat ~/.googlecode_upload_password` CRF++-0.55.zip
+	python googlecode_upload.py -p crfpp -s crfpp      -u taku@chasen.org -w `cat ~/.googlecode_upload_password` CRF++-0.56.tar.gz
+	python googlecode_upload.py -p crfpp -s crfpp-win  -u taku@chasen.org -w `cat ~/.googlecode_upload_password` CRF++-0.56.zip
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

@@ -50,8 +50,9 @@ extern "C" {
   CRFPP_DLL_EXTERN crfpp_t* crfpp_new(int,  char**);
   CRFPP_DLL_EXTERN crfpp_t* crfpp_new2(const char*);
   CRFPP_DLL_EXTERN void     crfpp_destroy(crfpp_t*);
-  CRFPP_DLL_EXTERN bool     crfpp_add2(crfpp_t*, size_t, const char **);
-  CRFPP_DLL_EXTERN bool     crfpp_add(crfpp_t*, const char*);
+  CRFPP_DLL_EXTERN int      crfpp_set_model(crfpp_t *, crfpp_model_t *);
+  CRFPP_DLL_EXTERN int      crfpp_add2(crfpp_t*, size_t, const char **);
+  CRFPP_DLL_EXTERN int      crfpp_add(crfpp_t*, const char*);
   CRFPP_DLL_EXTERN size_t   crfpp_size(crfpp_t*);
   CRFPP_DLL_EXTERN size_t   crfpp_xsize(crfpp_t*);
   CRFPP_DLL_EXTERN size_t   crfpp_dsize(crfpp_t*);
@@ -79,10 +80,10 @@ extern "C" {
   CRFPP_DLL_EXTERN const int* crfpp_prev_transition_vector(crfpp_t*, size_t,
                                                            size_t, size_t);
   CRFPP_DLL_EXTERN double   crfpp_Z(crfpp_t*);
-  CRFPP_DLL_EXTERN bool     crfpp_parse(crfpp_t*);
-  CRFPP_DLL_EXTERN bool     crfpp_empty(crfpp_t*);
-  CRFPP_DLL_EXTERN bool     crfpp_clear(crfpp_t*);
-  CRFPP_DLL_EXTERN bool     crfpp_next(crfpp_t*);
+  CRFPP_DLL_EXTERN int      crfpp_parse(crfpp_t*);
+  CRFPP_DLL_EXTERN int      crfpp_empty(crfpp_t*);
+  CRFPP_DLL_EXTERN int      crfpp_clear(crfpp_t*);
+  CRFPP_DLL_EXTERN int      crfpp_next(crfpp_t*);
   CRFPP_DLL_EXTERN int      crfpp_test(int, char **);
   CRFPP_DLL_EXTERN int      crfpp_learn(int, char **);
   CRFPP_DLL_EXTERN const char*  crfpp_strerror(crfpp_t*);
@@ -155,6 +156,9 @@ class CRFPP_DLL_CLASS_EXTERN Tagger {
   // return parameter vector. the size should be dsize();
   virtual const float *weight_vector() const = 0;
 #endif
+
+  // set Model
+  virtual bool set_model(const Model &model) = 0;
 
   // set vlevel
   virtual void set_vlevel(unsigned int vlevel) = 0;

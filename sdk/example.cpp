@@ -76,4 +76,8 @@ int main(int argc, char **argv) {
     // you can access any information using tagger->y()...
   }
   std::cout << "Done" << std::endl;
+
+  delete tagger;
+
+  return 0;
 }
