@@ -25,10 +25,6 @@ dist-hook:
 	  find $(distdir) -name .svn  | xargs rm -fr; \
 	done
 
-win:
-	(cd src; rm -f *.exe *.obj *.dll)
-#	(cd src; wcmd /c make.bat)
-
 win-dist:
 	rm -f @PACKAGE@-@VERSION@.zip
 	mkdir -p @PACKAGE@-@VERSION@/doc
@@ -62,7 +58,6 @@ dist-all-package:
 	$(MAKE) clean
 	$(MAKE) script-clean
 	$(MAKE) script-dist
-	$(MAKE) win
 	$(MAKE) win-dist
 
 script-dist:
@@ -84,7 +79,5 @@ script-clean:
 	(cd java; $(MAKE) clean;)
 
 export-package:
-#	./upload.pl -p crfpp -n crfpp        -r @VERSION@ -f CRF++-@VERSION@.tar.gz
-#	./upload.pl -p crfpp -n crfpp-win32  -r @VERSION@ -f CRF++-@VERSION@.zip
-	scp doc/*.html sf:public_html/crfpp/
-	scp doc/*.css sf:public_html/crfpp/
+	python googlecode_upload.py -p crfpp -s crfpp      -u taku@chasen.org -w `cat ~/.googlecode_upload_password` CRF++-@VERSION@.tar.gz
+	python googlecode_upload.py -p crfpp -s crfpp-win  -u taku@chasen.org -w `cat ~/.googlecode_upload_password` CRF++-@VERSION@.zip
