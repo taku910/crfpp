@@ -89,6 +89,7 @@ class Tagger(_object):
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, Tagger, name)
     __repr__ = _swig_repr
+    def set_model(self, *args): return _CRFPP.Tagger_set_model(self, *args)
     def set_vlevel(self, *args): return _CRFPP.Tagger_set_vlevel(self, *args)
     def vlevel(self): return _CRFPP.Tagger_vlevel(self)
     def set_cost_factor(self, *args): return _CRFPP.Tagger_set_cost_factor(self, *args)

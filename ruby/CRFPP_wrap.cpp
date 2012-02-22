@@ -1949,6 +1949,13 @@ SWIG_AsCharPtrAndSize(VALUE obj, char** cptr, size_t* psize, int *alloc)
 
 
 
+SWIGINTERNINLINE VALUE
+SWIG_From_bool  (bool value)
+{
+  return value ? Qtrue : Qfalse;
+}
+
+
 #include <limits.h>
 #if !defined(SWIG_NO_LLONG_MAX)
 # if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
@@ -2102,13 +2109,6 @@ SWIG_From_size_t  (size_t value)
   return SWIG_From_unsigned_SS_long  (static_cast< unsigned long >(value));
 }
 
-
-SWIGINTERNINLINE VALUE
-SWIG_From_bool  (bool value)
-{
-  return value ? Qtrue : Qfalse;
-}
-
 swig_class SwigClassModel;
 
 SWIGINTERN VALUE
@@ -2238,6 +2238,51 @@ fail:
 
 
 swig_class SwigClassTagger;
+
+SWIGINTERN VALUE
+_wrap_Tagger_set_model(int argc, VALUE *argv, VALUE self) {
+  CRFPP::Tagger *arg1 = (CRFPP::Tagger *) 0 ;
+  CRFPP::Model *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  bool result;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 1) || (argc > 1)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 1)",argc); SWIG_fail;
+  }
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_CRFPP__Tagger, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "CRFPP::Tagger *","set_model", 1, self )); 
+  }
+  arg1 = reinterpret_cast< CRFPP::Tagger * >(argp1);
+  res2 = SWIG_ConvertPtr(argv[0], &argp2, SWIGTYPE_p_CRFPP__Model,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), Ruby_Format_TypeError( "", "CRFPP::Model const &","set_model", 2, argv[0] )); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, Ruby_Format_TypeError("invalid null reference ", "CRFPP::Model const &","set_model", 2, argv[0])); 
+  }
+  arg2 = reinterpret_cast< CRFPP::Model * >(argp2);
+  {
+    try {
+      result = (bool)(arg1)->set_model((CRFPP::Model const &)*arg2); 
+    }
+    catch (char *e) {
+      SWIG_exception (SWIG_RuntimeError, e); 
+    }
+    catch (const char *e) {
+      SWIG_exception (SWIG_RuntimeError, (char*)e); 
+    }
+  }
+  vresult = SWIG_From_bool(static_cast< bool >(result));
+  return vresult;
+fail:
+  return Qnil;
+}
+
 
 SWIGINTERN VALUE
 _wrap_Tagger_set_vlevel(int argc, VALUE *argv, VALUE self) {
@@ -4177,6 +4222,7 @@ SWIGEXPORT void Init_CRFPP(void) {
   SWIG_TypeClientData(SWIGTYPE_p_CRFPP__Tagger, (void *) &SwigClassTagger);
   rb_define_alloc_func(SwigClassTagger.klass, _wrap_Tagger_allocate);
   rb_define_method(SwigClassTagger.klass, "initialize", VALUEFUNC(_wrap_new_Tagger), -1);
+  rb_define_method(SwigClassTagger.klass, "set_model", VALUEFUNC(_wrap_Tagger_set_model), -1);
   rb_define_method(SwigClassTagger.klass, "set_vlevel", VALUEFUNC(_wrap_Tagger_set_vlevel), -1);
   rb_define_method(SwigClassTagger.klass, "vlevel", VALUEFUNC(_wrap_Tagger_vlevel), -1);
   rb_define_method(SwigClassTagger.klass, "set_cost_factor", VALUEFUNC(_wrap_Tagger_set_cost_factor), -1);
@@ -4212,6 +4258,6 @@ SWIGEXPORT void Init_CRFPP(void) {
   SwigClassTagger.mark = 0;
   SwigClassTagger.destroy = (void (*)(void *)) free_CRFPP_Tagger;
   SwigClassTagger.trackObjects = 0;
-  rb_define_const(mCRFPP, "VERSION", SWIG_FromCharPtr("0.55"));
+  rb_define_const(mCRFPP, "VERSION", SWIG_FromCharPtr("0.56"));
 }
 

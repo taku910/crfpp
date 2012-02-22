@@ -96,6 +96,7 @@ use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
 @ISA = qw( CRFPP );
 %OWNER = ();
 %ITERATORS = ();
+*set_model = *CRFPPc::Tagger_set_model;
 *set_vlevel = *CRFPPc::Tagger_set_vlevel;
 *vlevel = *CRFPPc::Tagger_vlevel;
 *set_cost_factor = *CRFPPc::Tagger_set_cost_factor;

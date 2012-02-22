@@ -412,6 +412,42 @@ SWIGEXPORT jlong JNICALL Java_org_chasen_crfpp_CRFPPJNI_new_1Model(JNIEnv *jenv,
 }
 
 
+SWIGEXPORT jboolean JNICALL Java_org_chasen_crfpp_CRFPPJNI_Tagger_1set_1model(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  jboolean jresult = 0 ;
+  CRFPP::Tagger *arg1 = (CRFPP::Tagger *) 0 ;
+  CRFPP::Model *arg2 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(CRFPP::Tagger **)&jarg1; 
+  arg2 = *(CRFPP::Model **)&jarg2;
+  if (!arg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "CRFPP::Model const & reference is null");
+    return 0;
+  } 
+  {
+    try {
+      result = (bool)(arg1)->set_model((CRFPP::Model const &)*arg2); 
+    }
+    catch (char *e) {
+      {
+        SWIG_JavaException(jenv, SWIG_RuntimeError, e); return 0; 
+      }; 
+    }
+    catch (const char *e) {
+      {
+        SWIG_JavaException(jenv, SWIG_RuntimeError, (char*)e); return 0; 
+      }; 
+    }
+  }
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
 SWIGEXPORT void JNICALL Java_org_chasen_crfpp_CRFPPJNI_Tagger_1set_1vlevel(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   CRFPP::Tagger *arg1 = (CRFPP::Tagger *) 0 ;
   unsigned int arg2 ;
@@ -1552,7 +1588,7 @@ SWIGEXPORT jstring JNICALL Java_org_chasen_crfpp_CRFPPJNI_VERSION_1get(JNIEnv *j
   
   (void)jenv;
   (void)jcls;
-  result = (char *) "0.55";
+  result = (char *) "0.56";
   if (result) jresult = jenv->NewStringUTF((const char *)result);
   return jresult;
 }

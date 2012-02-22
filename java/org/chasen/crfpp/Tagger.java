@@ -35,6 +35,10 @@ public class Tagger {
     }
   }
 
+  public boolean set_model(Model model) {
+    return CRFPPJNI.Tagger_set_model(swigCPtr, this, Model.getCPtr(model), model);
+  }
+
   public void set_vlevel(long vlevel) {
     CRFPPJNI.Tagger_set_vlevel(swigCPtr, this, vlevel);
   }

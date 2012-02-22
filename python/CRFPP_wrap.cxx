@@ -2935,6 +2935,13 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 
 
+SWIGINTERNINLINE PyObject*
+  SWIG_From_bool  (bool value)
+{
+  return PyBool_FromLong(value ? 1 : 0);
+}
+
+
 #include <limits.h>
 #if !defined(SWIG_NO_LLONG_MAX)
 # if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
@@ -3145,13 +3152,6 @@ SWIG_From_size_t  (size_t value)
   return SWIG_From_unsigned_SS_long  (static_cast< unsigned long >(value));
 }
 
-
-SWIGINTERNINLINE PyObject*
-  SWIG_From_bool  (bool value)
-{
-  return PyBool_FromLong(value ? 1 : 0);
-}
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -3291,6 +3291,50 @@ SWIGINTERN PyObject *Model_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject
   SWIG_TypeNewClientData(SWIGTYPE_p_CRFPP__Model, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
+
+SWIGINTERN PyObject *_wrap_Tagger_set_model(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  CRFPP::Tagger *arg1 = (CRFPP::Tagger *) 0 ;
+  CRFPP::Model *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Tagger_set_model",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_CRFPP__Tagger, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Tagger_set_model" "', argument " "1"" of type '" "CRFPP::Tagger *""'"); 
+  }
+  arg1 = reinterpret_cast< CRFPP::Tagger * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_CRFPP__Model,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Tagger_set_model" "', argument " "2"" of type '" "CRFPP::Model const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Tagger_set_model" "', argument " "2"" of type '" "CRFPP::Model const &""'"); 
+  }
+  arg2 = reinterpret_cast< CRFPP::Model * >(argp2);
+  {
+    try {
+      result = (bool)(arg1)->set_model((CRFPP::Model const &)*arg2); 
+    }
+    catch (char *e) {
+      SWIG_exception (SWIG_RuntimeError, e); 
+    }
+    catch (const char *e) {
+      SWIG_exception (SWIG_RuntimeError, (char*)e); 
+    }
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
 
 SWIGINTERN PyObject *_wrap_Tagger_set_vlevel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
@@ -4908,6 +4952,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_Model", _wrap_delete_Model, METH_VARARGS, NULL},
 	 { (char *)"new_Model", _wrap_new_Model, METH_VARARGS, NULL},
 	 { (char *)"Model_swigregister", Model_swigregister, METH_VARARGS, NULL},
+	 { (char *)"Tagger_set_model", _wrap_Tagger_set_model, METH_VARARGS, NULL},
 	 { (char *)"Tagger_set_vlevel", _wrap_Tagger_set_vlevel, METH_VARARGS, NULL},
 	 { (char *)"Tagger_vlevel", _wrap_Tagger_vlevel, METH_VARARGS, NULL},
 	 { (char *)"Tagger_set_cost_factor", _wrap_Tagger_set_cost_factor, METH_VARARGS, NULL},
@@ -5560,7 +5605,7 @@ SWIG_init(void) {
   SWIG_InstallConstants(d,swig_const_table);
   
   
-  SWIG_Python_SetConstant(d, "VERSION",SWIG_FromCharPtr("0.55"));
+  SWIG_Python_SetConstant(d, "VERSION",SWIG_FromCharPtr("0.56"));
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else

@@ -13,6 +13,7 @@ class CRFPPJNI {
   public final static native String Model_what(long jarg1, Model jarg1_);
   public final static native void delete_Model(long jarg1);
   public final static native long new_Model(String jarg1);
+  public final static native boolean Tagger_set_model(long jarg1, Tagger jarg1_, long jarg2, Model jarg2_);
   public final static native void Tagger_set_vlevel(long jarg1, Tagger jarg1_, long jarg2);
   public final static native long Tagger_vlevel(long jarg1, Tagger jarg1_);
   public final static native void Tagger_set_cost_factor(long jarg1, Tagger jarg1_, float jarg2);
