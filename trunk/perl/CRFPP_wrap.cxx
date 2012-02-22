@@ -1659,6 +1659,19 @@ SWIG_AsCharPtrAndSize(SV *obj, char** cptr, size_t* psize, int *alloc)
 
 
 
+SWIGINTERNINLINE SV *
+SWIG_From_bool  SWIG_PERL_DECL_ARGS_1(bool value)
+{    
+  SV *obj = sv_newmortal();
+  if (value) {
+    sv_setsv(obj, &PL_sv_yes);
+  } else {
+    sv_setsv(obj, &PL_sv_no); 
+  }
+  return obj;
+}
+
+
 #include <limits.h>
 #if !defined(SWIG_NO_LLONG_MAX)
 # if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
@@ -1859,19 +1872,6 @@ SWIG_From_size_t  SWIG_PERL_DECL_ARGS_1(size_t value)
   return SWIG_From_unsigned_SS_long  SWIG_PERL_CALL_ARGS_1(static_cast< unsigned long >(value));
 }
 
-
-SWIGINTERNINLINE SV *
-SWIG_From_bool  SWIG_PERL_DECL_ARGS_1(bool value)
-{    
-  SV *obj = sv_newmortal();
-  if (value) {
-    sv_setsv(obj, &PL_sv_yes);
-  } else {
-    sv_setsv(obj, &PL_sv_no); 
-  }
-  return obj;
-}
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -2048,6 +2048,57 @@ XS(_wrap_new_Model) {
     XSRETURN(argvi);
   fail:
     if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+    SWIG_croak_null();
+  }
+}
+
+
+XS(_wrap_Tagger_set_model) {
+  {
+    CRFPP::Tagger *arg1 = (CRFPP::Tagger *) 0 ;
+    CRFPP::Model *arg2 = 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    void *argp2 ;
+    int res2 = 0 ;
+    int argvi = 0;
+    bool result;
+    dXSARGS;
+    
+    if ((items < 2) || (items > 2)) {
+      SWIG_croak("Usage: Tagger_set_model(self,model);");
+    }
+    res1 = SWIG_ConvertPtr(ST(0), &argp1,SWIGTYPE_p_CRFPP__Tagger, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Tagger_set_model" "', argument " "1"" of type '" "CRFPP::Tagger *""'"); 
+    }
+    arg1 = reinterpret_cast< CRFPP::Tagger * >(argp1);
+    res2 = SWIG_ConvertPtr(ST(1), &argp2, SWIGTYPE_p_CRFPP__Model,  0 );
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Tagger_set_model" "', argument " "2"" of type '" "CRFPP::Model const &""'"); 
+    }
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Tagger_set_model" "', argument " "2"" of type '" "CRFPP::Model const &""'"); 
+    }
+    arg2 = reinterpret_cast< CRFPP::Model * >(argp2);
+    {
+      try {
+        result = (bool)(arg1)->set_model((CRFPP::Model const &)*arg2); 
+      }
+      catch (char *e) {
+        SWIG_exception (SWIG_RuntimeError, e); 
+      }
+      catch (const char *e) {
+        SWIG_exception (SWIG_RuntimeError, (char*)e); 
+      }
+    }
+    ST(argvi) = SWIG_From_bool  SWIG_PERL_CALL_ARGS_1(static_cast< bool >(result)); argvi++ ;
+    
+    
+    XSRETURN(argvi);
+  fail:
+    
+    
     SWIG_croak_null();
   }
 }
@@ -4022,6 +4073,7 @@ static swig_command_info swig_commands[] = {
 {"CRFPPc::Model_what", _wrap_Model_what},
 {"CRFPPc::delete_Model", _wrap_delete_Model},
 {"CRFPPc::new_Model", _wrap_new_Model},
+{"CRFPPc::Tagger_set_model", _wrap_Tagger_set_model},
 {"CRFPPc::Tagger_set_vlevel", _wrap_Tagger_set_vlevel},
 {"CRFPPc::Tagger_vlevel", _wrap_Tagger_vlevel},
 {"CRFPPc::Tagger_set_cost_factor", _wrap_Tagger_set_cost_factor},
@@ -4354,7 +4406,7 @@ XS(SWIG_init) {
   SWIG_TypeClientData(SWIGTYPE_p_CRFPP__Tagger, (void*) "CRFPP::Tagger");
   /*@SWIG:/usr/share/swig1.3/perl5/perltypemaps.swg,65,%set_constant@*/ do {
     SV *sv = get_sv((char*) SWIG_prefix "VERSION", TRUE | 0x2 | GV_ADDMULTI);
-    sv_setsv(sv, SWIG_FromCharPtr("0.55"));
+    sv_setsv(sv, SWIG_FromCharPtr("0.56"));
     SvREADONLY_on(sv);
   } while(0) /*@SWIG@*/;
   ST(0) = &PL_sv_yes;
