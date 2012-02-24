@@ -8,6 +8,7 @@
 #ifndef CRFPP_LBFGS_H_
 #define CRFPP_LBFGS_H_
 
+#include <cmath>
 #include <vector>
 #include <iostream>
 
