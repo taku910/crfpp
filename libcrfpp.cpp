@@ -80,6 +80,9 @@ void crfpp_model_destroy(crfpp_model_t *c) {
 }
 
 const char* crfpp_model_strerror(crfpp_model_t *c) {
+  if (!c) {
+    return CRFPP::getLastError();
+  }
   return reinterpret_cast<CRFPP::Model *>(c)->what();
 }
 
@@ -105,6 +108,9 @@ crfpp_t* crfpp_new2(char *arg) {
 }
 
 const char* crfpp_strerror(crfpp_t *c) {
+  if (!c) {
+    return CRFPP::getLastError();
+  }
   return reinterpret_cast<CRFPP::Tagger *>(c)->what();
 }
 
