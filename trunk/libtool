@@ -1,8 +1,8 @@
 #! /bin/bash
 
 # libtool - Provide generalized library-building support services.
-# Generated automatically by config.status (libtool) 2.4
-# Libtool was configured on host yellow:
+# Generated automatically by config.status (CRF++) 0.57
+# Libtool was configured on host ubuntu:
 # NOTE: Changes made to this file will be lost: look at ltmain.sh.
 #
 #   Copyright (C) 1996, 1997, 1998, 1999, 2000, 2001, 2003, 2004, 2005,
@@ -35,22 +35,13 @@
 
 
 # The names of the tagged configurations supported by this script.
-available_tags="CXX F77 FC GCJ RC  BINCC BINCXX"
+available_tags="CXX "
 
 # ### BEGIN LIBTOOL CONFIG
 
 # Which release of libtool.m4 was used?
 macro_version=2.4
 macro_revision=1.3293
-
-# Assembler program.
-AS="as"
-
-# DLL creation program.
-DLLTOOL="false"
-
-# Object dumper program.
-OBJDUMP="objdump"
 
 # Whether or not to build shared libraries.
 build_libtool_libs=yes
@@ -72,12 +63,12 @@ ECHO="printf %s\\n"
 
 # The host system.
 host_alias=
-host=x86_64-pc-linux-gnu
+host=x86_64-unknown-linux-gnu
 host_os=linux-gnu
 
 # The build system.
-build_alias=x86_64-linux-gnu
-build=x86_64-pc-linux-gnu
+build_alias=
+build=x86_64-unknown-linux-gnu
 build_os=linux-gnu
 
 # A sed program that does not truncate output.
@@ -125,6 +116,9 @@ to_host_file_cmd=func_convert_file_noop
 # convert $build files to toolchain format.
 to_tool_file_cmd=func_convert_file_noop
 
+# An object symbol dumper.
+OBJDUMP="objdump"
+
 # Method to check whether dependent libraries are shared objects.
 deplibs_check_method="pass_all"
 
@@ -136,6 +130,9 @@ file_magic_glob=""
 
 # Find potential files using nocaseglob when deplibs_check_method = "file_magic".
 want_nocaseglob="no"
+
+# DLL creation program.
+DLLTOOL="false"
 
 # Command to associate shared and link libraries.
 sharedlib_from_linklib_cmd="printf %s\\n"
@@ -164,7 +161,7 @@ lock_old_archive_extraction=no
 LTCC="gcc"
 
 # LTCC compiler flags.
-LTCFLAGS="-Wall -g -O2"
+LTCFLAGS="-O3 -Wall"
 
 # Take the output of nm and produce a listing of raw symbols and C names.
 global_symbol_pipe="sed -n -e 's/^.*[	 ]\\([ABCDGIRSTW][ABCDGIRSTW]*\\)[	 ][	 ]*\\([_A-Za-z][_A-Za-z0-9]*\\)\$/\\1 \\2 \\2/p' | sed '/ __gnu_lto/d'"
@@ -272,19 +269,19 @@ finish_eval=""
 hardcode_into_libs=yes
 
 # Compile-time system search path for libraries.
-sys_lib_search_path_spec="/lib/ /usr/lib/ /usr/X11R6/lib/ /usr/local/lib/"
+sys_lib_search_path_spec="/usr/lib/gcc/x86_64-linux-gnu/4.6.1 /usr/lib/x86_64-linux-gnu /usr/lib /lib/x86_64-linux-gnu /lib "
 
 # Run-time system search path for libraries.
-sys_lib_dlsearch_path_spec="/lib /usr/lib /usr/local/lib /lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu "
+sys_lib_dlsearch_path_spec="/lib /usr/lib /lib32 /usr/lib32 /usr/lib/i386-linux-gnu/mesa /lib/i386-linux-gnu /usr/lib/i386-linux-gnu /lib/i686-linux-gnu /usr/lib/i686-linux-gnu /usr/local/lib /usr/lib/vmware-tools/lib32/libvmGuestLib.so /usr/lib/vmware-tools/lib64/libvmGuestLib.so /usr/lib/vmware-tools/lib32/libvmGuestLibJava.so /usr/lib/vmware-tools/lib64/libvmGuestLibJava.so /usr/lib/vmware-tools/lib32/libDeployPkg.so /usr/lib/vmware-tools/lib64/libDeployPkg.so /lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/mesa /usr/local/lib "
 
 # Whether dlopen is supported.
-dlopen_support=yes
+dlopen_support=unknown
 
 # Whether dlopen of programs is supported.
-dlopen_self=yes
+dlopen_self=unknown
 
 # Whether dlopen of statically linked programs is supported.
-dlopen_self_static=no
+dlopen_self_static=unknown
 
 # Commands to strip libraries.
 old_striplib="strip --strip-debug"
@@ -10136,8 +10133,8 @@ old_archive_from_new_cmds=""
 old_archive_from_expsyms_cmds=""
 
 # Commands used to build a shared archive.
-archive_cmds="\$CC \$pic_flag -shared \$predep_objects \$libobjs \$deplibs \$postdep_objects \$compiler_flags \${wl}-soname \$wl\$soname -o \$lib"
-archive_expsym_cmds="\$CC \$pic_flag -shared \$predep_objects \$libobjs \$deplibs \$postdep_objects \$compiler_flags \${wl}-soname \$wl\$soname \${wl}-retain-symbols-file \$wl\$export_symbols -o \$lib"
+archive_cmds="\$CC \$pic_flag -shared -nostdlib \$predep_objects \$libobjs \$deplibs \$postdep_objects \$compiler_flags \${wl}-soname \$wl\$soname -o \$lib"
+archive_expsym_cmds="\$CC \$pic_flag -shared -nostdlib \$predep_objects \$libobjs \$deplibs \$postdep_objects \$compiler_flags \${wl}-soname \$wl\$soname \${wl}-retain-symbols-file \$wl\$export_symbols -o \$lib"
 
 # Commands used to build a loadable module if different from building
 # a shared archive.
@@ -10219,799 +10216,17 @@ file_list_spec=""
 hardcode_action=immediate
 
 # The directories searched by this compiler when creating a shared library.
-compiler_lib_search_dirs="/usr/lib/x86_64-linux-gnu/gcc/x86_64-linux-gnu/4.6.1 /usr/lib/x86_64-linux-gnu/gcc/x86_64-linux-gnu/4.6.1/../../.. /usr/lib/x86_64-linux-gnu"
+compiler_lib_search_dirs="/usr/lib/gcc/x86_64-linux-gnu/4.6.1 /usr/lib/gcc/x86_64-linux-gnu/4.6.1/../../../x86_64-linux-gnu /usr/lib/gcc/x86_64-linux-gnu/4.6.1/../../../../lib /lib/x86_64-linux-gnu /lib/../lib /usr/lib/x86_64-linux-gnu /usr/lib/../lib /usr/lib/gcc/x86_64-linux-gnu/4.6.1/../../.."
 
 # Dependencies to place before and after the objects being linked to
 # create a shared library.
-predep_objects=""
-postdep_objects=""
+predep_objects="/usr/lib/gcc/x86_64-linux-gnu/4.6.1/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.6.1/crtbeginS.o"
+postdep_objects="/usr/lib/gcc/x86_64-linux-gnu/4.6.1/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/4.6.1/../../../x86_64-linux-gnu/crtn.o"
 predeps=""
 postdeps="-lstdc++ -lm -lgcc_s -lc -lgcc_s"
 
 # The library search path used internally by the compiler when linking
 # a shared library.
-compiler_lib_search_path=""
+compiler_lib_search_path="-L/usr/lib/gcc/x86_64-linux-gnu/4.6.1 -L/usr/lib/gcc/x86_64-linux-gnu/4.6.1/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.6.1/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.6.1/../../.."
 
 # ### END LIBTOOL TAG CONFIG: CXX
-
-# ### BEGIN LIBTOOL TAG CONFIG: F77
-
-# The linker used to build libraries.
-LD="/usr/bin/ld -m elf_x86_64"
-
-# How to create reloadable object files.
-reload_flag=" -r"
-reload_cmds="\$LD\$reload_flag -o \$output\$reload_objs"
-
-# Commands used to build an old-style archive.
-old_archive_cmds="\$AR \$AR_FLAGS \$oldlib\$oldobjs~\$RANLIB \$oldlib"
-
-# A language specific compiler.
-CC="gfortran"
-
-# Is the compiler the GNU compiler?
-with_gcc=yes
-
-# Compiler flag to turn off builtin functions.
-no_builtin_flag=""
-
-# Additional compiler flags for building library objects.
-pic_flag=" -fPIC"
-
-# How to pass a linker flag through the compiler.
-wl="-Wl,"
-
-# Compiler flag to prevent dynamic linking.
-link_static_flag="-static"
-
-# Does compiler simultaneously support -c and -o options?
-compiler_c_o="yes"
-
-# Whether or not to add -lc for building shared libraries.
-build_libtool_need_lc=no
-
-# Whether or not to disallow shared libs when runtime libs are static.
-allow_libtool_libs_with_static_runtimes=no
-
-# Compiler flag to allow reflexive dlopens.
-export_dynamic_flag_spec="\${wl}--export-dynamic"
-
-# Compiler flag to generate shared objects directly from archives.
-whole_archive_flag_spec="\${wl}--whole-archive\$convenience \${wl}--no-whole-archive"
-
-# Whether the compiler copes with passing no objects directly.
-compiler_needs_object="no"
-
-# Create an old-style archive from a shared archive.
-old_archive_from_new_cmds=""
-
-# Create a temporary old-style archive to link instead of a shared archive.
-old_archive_from_expsyms_cmds=""
-
-# Commands used to build a shared archive.
-archive_cmds="\$CC -shared \$pic_flag \$libobjs \$deplibs \$compiler_flags \${wl}-soname \$wl\$soname -o \$lib"
-archive_expsym_cmds="echo \\\"{ global:\\\" > \$output_objdir/\$libname.ver~
-	    cat \$export_symbols | sed -e \\\"s/\\\\(.*\\\\)/\\\\1;/\\\" >> \$output_objdir/\$libname.ver~
-	    echo \\\"local: *; };\\\" >> \$output_objdir/\$libname.ver~
-	    \$CC -shared \$pic_flag \$libobjs \$deplibs \$compiler_flags \${wl}-soname \$wl\$soname \${wl}-version-script \${wl}\$output_objdir/\$libname.ver -o \$lib"
-
-# Commands used to build a loadable module if different from building
-# a shared archive.
-module_cmds=""
-module_expsym_cmds=""
-
-# Whether we are building with GNU ld or not.
-with_gnu_ld="yes"
-
-# Flag that allows shared libraries with undefined symbols to be built.
-allow_undefined_flag=""
-
-# Flag that enforces no undefined symbols.
-no_undefined_flag=""
-
-# Flag to hardcode $libdir into a binary during linking.
-# This must work even if $libdir does not exist
-hardcode_libdir_flag_spec="\${wl}-rpath \${wl}\$libdir"
-
-# If ld is used when linking, flag to hardcode $libdir into a binary
-# during linking.  This must work even if $libdir does not exist.
-hardcode_libdir_flag_spec_ld=""
-
-# Whether we need a single "-rpath" flag with a separated argument.
-hardcode_libdir_separator=""
-
-# Set to "yes" if using DIR/libNAME${shared_ext} during linking hardcodes
-# DIR into the resulting binary.
-hardcode_direct=no
-
-# Set to "yes" if using DIR/libNAME${shared_ext} during linking hardcodes
-# DIR into the resulting binary and the resulting library dependency is
-# "absolute",i.e impossible to change by setting ${shlibpath_var} if the
-# library is relocated.
-hardcode_direct_absolute=no
-
-# Set to "yes" if using the -LDIR flag during linking hardcodes DIR
-# into the resulting binary.
-hardcode_minus_L=no
-
-# Set to "yes" if using SHLIBPATH_VAR=DIR during linking hardcodes DIR
-# into the resulting binary.
-hardcode_shlibpath_var=unsupported
-
-# Set to "yes" if building a shared library automatically hardcodes DIR
-# into the library and all subsequent libraries and executables linked
-# against it.
-hardcode_automatic=no
-
-# Set to yes if linker adds runtime paths of dependent libraries
-# to runtime path list.
-inherit_rpath=no
-
-# Whether libtool must link a program against all its dependency libraries.
-link_all_deplibs=no
-
-# Set to "yes" if exported symbols are required.
-always_export_symbols=no
-
-# The commands to list exported symbols.
-export_symbols_cmds="\$NM \$libobjs \$convenience | \$global_symbol_pipe | \$SED 's/.* //' | sort | uniq > \$export_symbols"
-
-# Symbols that should not be listed in the preloaded symbols.
-exclude_expsyms="_GLOBAL_OFFSET_TABLE_|_GLOBAL__F[ID]_.*"
-
-# Symbols that must always be exported.
-include_expsyms=""
-
-# Commands necessary for linking programs (against libraries) with templates.
-prelink_cmds=""
-
-# Commands necessary for finishing linking programs.
-postlink_cmds=""
-
-# Specify filename containing input files.
-file_list_spec=""
-
-# How to hardcode a shared library path into an executable.
-hardcode_action=immediate
-
-# The directories searched by this compiler when creating a shared library.
-compiler_lib_search_dirs=""
-
-# Dependencies to place before and after the objects being linked to
-# create a shared library.
-predep_objects=""
-postdep_objects=""
-predeps=""
-postdeps=""
-
-# The library search path used internally by the compiler when linking
-# a shared library.
-compiler_lib_search_path=""
-
-# ### END LIBTOOL TAG CONFIG: F77
-
-# ### BEGIN LIBTOOL TAG CONFIG: FC
-
-# The linker used to build libraries.
-LD="/usr/bin/ld -m elf_x86_64"
-
-# How to create reloadable object files.
-reload_flag=" -r"
-reload_cmds="\$LD\$reload_flag -o \$output\$reload_objs"
-
-# Commands used to build an old-style archive.
-old_archive_cmds="\$AR \$AR_FLAGS \$oldlib\$oldobjs~\$RANLIB \$oldlib"
-
-# A language specific compiler.
-CC="gfortran"
-
-# Is the compiler the GNU compiler?
-with_gcc=yes
-
-# Compiler flag to turn off builtin functions.
-no_builtin_flag=""
-
-# Additional compiler flags for building library objects.
-pic_flag=" -fPIC"
-
-# How to pass a linker flag through the compiler.
-wl="-Wl,"
-
-# Compiler flag to prevent dynamic linking.
-link_static_flag="-static"
-
-# Does compiler simultaneously support -c and -o options?
-compiler_c_o="yes"
-
-# Whether or not to add -lc for building shared libraries.
-build_libtool_need_lc=no
-
-# Whether or not to disallow shared libs when runtime libs are static.
-allow_libtool_libs_with_static_runtimes=no
-
-# Compiler flag to allow reflexive dlopens.
-export_dynamic_flag_spec="\${wl}--export-dynamic"
-
-# Compiler flag to generate shared objects directly from archives.
-whole_archive_flag_spec="\${wl}--whole-archive\$convenience \${wl}--no-whole-archive"
-
-# Whether the compiler copes with passing no objects directly.
-compiler_needs_object="no"
-
-# Create an old-style archive from a shared archive.
-old_archive_from_new_cmds=""
-
-# Create a temporary old-style archive to link instead of a shared archive.
-old_archive_from_expsyms_cmds=""
-
-# Commands used to build a shared archive.
-archive_cmds="\$CC -shared \$pic_flag \$libobjs \$deplibs \$compiler_flags \${wl}-soname \$wl\$soname -o \$lib"
-archive_expsym_cmds="echo \\\"{ global:\\\" > \$output_objdir/\$libname.ver~
-	    cat \$export_symbols | sed -e \\\"s/\\\\(.*\\\\)/\\\\1;/\\\" >> \$output_objdir/\$libname.ver~
-	    echo \\\"local: *; };\\\" >> \$output_objdir/\$libname.ver~
-	    \$CC -shared \$pic_flag \$libobjs \$deplibs \$compiler_flags \${wl}-soname \$wl\$soname \${wl}-version-script \${wl}\$output_objdir/\$libname.ver -o \$lib"
-
-# Commands used to build a loadable module if different from building
-# a shared archive.
-module_cmds=""
-module_expsym_cmds=""
-
-# Whether we are building with GNU ld or not.
-with_gnu_ld="yes"
-
-# Flag that allows shared libraries with undefined symbols to be built.
-allow_undefined_flag=""
-
-# Flag that enforces no undefined symbols.
-no_undefined_flag=""
-
-# Flag to hardcode $libdir into a binary during linking.
-# This must work even if $libdir does not exist
-hardcode_libdir_flag_spec="\${wl}-rpath \${wl}\$libdir"
-
-# If ld is used when linking, flag to hardcode $libdir into a binary
-# during linking.  This must work even if $libdir does not exist.
-hardcode_libdir_flag_spec_ld=""
-
-# Whether we need a single "-rpath" flag with a separated argument.
-hardcode_libdir_separator=""
-
-# Set to "yes" if using DIR/libNAME${shared_ext} during linking hardcodes
-# DIR into the resulting binary.
-hardcode_direct=no
-
-# Set to "yes" if using DIR/libNAME${shared_ext} during linking hardcodes
-# DIR into the resulting binary and the resulting library dependency is
-# "absolute",i.e impossible to change by setting ${shlibpath_var} if the
-# library is relocated.
-hardcode_direct_absolute=no
-
-# Set to "yes" if using the -LDIR flag during linking hardcodes DIR
-# into the resulting binary.
-hardcode_minus_L=no
-
-# Set to "yes" if using SHLIBPATH_VAR=DIR during linking hardcodes DIR
-# into the resulting binary.
-hardcode_shlibpath_var=unsupported
-
-# Set to "yes" if building a shared library automatically hardcodes DIR
-# into the library and all subsequent libraries and executables linked
-# against it.
-hardcode_automatic=no
-
-# Set to yes if linker adds runtime paths of dependent libraries
-# to runtime path list.
-inherit_rpath=no
-
-# Whether libtool must link a program against all its dependency libraries.
-link_all_deplibs=no
-
-# Set to "yes" if exported symbols are required.
-always_export_symbols=no
-
-# The commands to list exported symbols.
-export_symbols_cmds="\$NM \$libobjs \$convenience | \$global_symbol_pipe | \$SED 's/.* //' | sort | uniq > \$export_symbols"
-
-# Symbols that should not be listed in the preloaded symbols.
-exclude_expsyms="_GLOBAL_OFFSET_TABLE_|_GLOBAL__F[ID]_.*"
-
-# Symbols that must always be exported.
-include_expsyms=""
-
-# Commands necessary for linking programs (against libraries) with templates.
-prelink_cmds=""
-
-# Commands necessary for finishing linking programs.
-postlink_cmds=""
-
-# Specify filename containing input files.
-file_list_spec=""
-
-# How to hardcode a shared library path into an executable.
-hardcode_action=immediate
-
-# The directories searched by this compiler when creating a shared library.
-compiler_lib_search_dirs="/usr/lib/x86_64-linux-gnu/gcc/x86_64-linux-gnu/4.6.1 /usr/lib/x86_64-linux-gnu/gcc/x86_64-linux-gnu/4.6.1/../../.. /usr/lib/x86_64-linux-gnu"
-
-# Dependencies to place before and after the objects being linked to
-# create a shared library.
-predep_objects=""
-postdep_objects=""
-predeps=""
-postdeps="-lgfortran -lm -lgcc_s -lquadmath -lm -lgcc_s -lc -lgcc_s"
-
-# The library search path used internally by the compiler when linking
-# a shared library.
-compiler_lib_search_path=""
-
-# ### END LIBTOOL TAG CONFIG: FC
-
-# ### BEGIN LIBTOOL TAG CONFIG: GCJ
-
-# The linker used to build libraries.
-LD="/usr/bin/ld -m elf_x86_64"
-
-# How to create reloadable object files.
-reload_flag=" -r"
-reload_cmds="\$LD\$reload_flag -o \$output\$reload_objs"
-
-# Commands used to build an old-style archive.
-old_archive_cmds="\$AR \$AR_FLAGS \$oldlib\$oldobjs~\$RANLIB \$oldlib"
-
-# A language specific compiler.
-CC=""
-
-# Is the compiler the GNU compiler?
-with_gcc=
-
-# Compiler flag to turn off builtin functions.
-no_builtin_flag=""
-
-# Additional compiler flags for building library objects.
-pic_flag=""
-
-# How to pass a linker flag through the compiler.
-wl=""
-
-# Compiler flag to prevent dynamic linking.
-link_static_flag=""
-
-# Does compiler simultaneously support -c and -o options?
-compiler_c_o=""
-
-# Whether or not to add -lc for building shared libraries.
-build_libtool_need_lc=no
-
-# Whether or not to disallow shared libs when runtime libs are static.
-allow_libtool_libs_with_static_runtimes=
-
-# Compiler flag to allow reflexive dlopens.
-export_dynamic_flag_spec=""
-
-# Compiler flag to generate shared objects directly from archives.
-whole_archive_flag_spec=""
-
-# Whether the compiler copes with passing no objects directly.
-compiler_needs_object=""
-
-# Create an old-style archive from a shared archive.
-old_archive_from_new_cmds=""
-
-# Create a temporary old-style archive to link instead of a shared archive.
-old_archive_from_expsyms_cmds=""
-
-# Commands used to build a shared archive.
-archive_cmds=""
-archive_expsym_cmds=""
-
-# Commands used to build a loadable module if different from building
-# a shared archive.
-module_cmds=""
-module_expsym_cmds=""
-
-# Whether we are building with GNU ld or not.
-with_gnu_ld=""
-
-# Flag that allows shared libraries with undefined symbols to be built.
-allow_undefined_flag=""
-
-# Flag that enforces no undefined symbols.
-no_undefined_flag=""
-
-# Flag to hardcode $libdir into a binary during linking.
-# This must work even if $libdir does not exist
-hardcode_libdir_flag_spec=""
-
-# If ld is used when linking, flag to hardcode $libdir into a binary
-# during linking.  This must work even if $libdir does not exist.
-hardcode_libdir_flag_spec_ld=""
-
-# Whether we need a single "-rpath" flag with a separated argument.
-hardcode_libdir_separator=""
-
-# Set to "yes" if using DIR/libNAME${shared_ext} during linking hardcodes
-# DIR into the resulting binary.
-hardcode_direct=
-
-# Set to "yes" if using DIR/libNAME${shared_ext} during linking hardcodes
-# DIR into the resulting binary and the resulting library dependency is
-# "absolute",i.e impossible to change by setting ${shlibpath_var} if the
-# library is relocated.
-hardcode_direct_absolute=
-
-# Set to "yes" if using the -LDIR flag during linking hardcodes DIR
-# into the resulting binary.
-hardcode_minus_L=
-
-# Set to "yes" if using SHLIBPATH_VAR=DIR during linking hardcodes DIR
-# into the resulting binary.
-hardcode_shlibpath_var=
-
-# Set to "yes" if building a shared library automatically hardcodes DIR
-# into the library and all subsequent libraries and executables linked
-# against it.
-hardcode_automatic=
-
-# Set to yes if linker adds runtime paths of dependent libraries
-# to runtime path list.
-inherit_rpath=
-
-# Whether libtool must link a program against all its dependency libraries.
-link_all_deplibs=
-
-# Set to "yes" if exported symbols are required.
-always_export_symbols=
-
-# The commands to list exported symbols.
-export_symbols_cmds=""
-
-# Symbols that should not be listed in the preloaded symbols.
-exclude_expsyms=""
-
-# Symbols that must always be exported.
-include_expsyms=""
-
-# Commands necessary for linking programs (against libraries) with templates.
-prelink_cmds=""
-
-# Commands necessary for finishing linking programs.
-postlink_cmds=""
-
-# Specify filename containing input files.
-file_list_spec=""
-
-# How to hardcode a shared library path into an executable.
-hardcode_action=
-
-# The directories searched by this compiler when creating a shared library.
-compiler_lib_search_dirs=""
-
-# Dependencies to place before and after the objects being linked to
-# create a shared library.
-predep_objects=""
-postdep_objects=""
-predeps=""
-postdeps=""
-
-# The library search path used internally by the compiler when linking
-# a shared library.
-compiler_lib_search_path=""
-
-# ### END LIBTOOL TAG CONFIG: GCJ
-
-# ### BEGIN LIBTOOL TAG CONFIG: RC
-
-# The linker used to build libraries.
-LD=""
-
-# How to create reloadable object files.
-reload_flag=""
-reload_cmds=""
-
-# Commands used to build an old-style archive.
-old_archive_cmds=""
-
-# A language specific compiler.
-CC=""
-
-# Is the compiler the GNU compiler?
-with_gcc=
-
-# Compiler flag to turn off builtin functions.
-no_builtin_flag=""
-
-# Additional compiler flags for building library objects.
-pic_flag=""
-
-# How to pass a linker flag through the compiler.
-wl=""
-
-# Compiler flag to prevent dynamic linking.
-link_static_flag=""
-
-# Does compiler simultaneously support -c and -o options?
-compiler_c_o="yes"
-
-# Whether or not to add -lc for building shared libraries.
-build_libtool_need_lc=
-
-# Whether or not to disallow shared libs when runtime libs are static.
-allow_libtool_libs_with_static_runtimes=
-
-# Compiler flag to allow reflexive dlopens.
-export_dynamic_flag_spec=""
-
-# Compiler flag to generate shared objects directly from archives.
-whole_archive_flag_spec=""
-
-# Whether the compiler copes with passing no objects directly.
-compiler_needs_object=""
-
-# Create an old-style archive from a shared archive.
-old_archive_from_new_cmds=""
-
-# Create a temporary old-style archive to link instead of a shared archive.
-old_archive_from_expsyms_cmds=""
-
-# Commands used to build a shared archive.
-archive_cmds=""
-archive_expsym_cmds=""
-
-# Commands used to build a loadable module if different from building
-# a shared archive.
-module_cmds=""
-module_expsym_cmds=""
-
-# Whether we are building with GNU ld or not.
-with_gnu_ld=""
-
-# Flag that allows shared libraries with undefined symbols to be built.
-allow_undefined_flag=""
-
-# Flag that enforces no undefined symbols.
-no_undefined_flag=""
-
-# Flag to hardcode $libdir into a binary during linking.
-# This must work even if $libdir does not exist
-hardcode_libdir_flag_spec=""
-
-# If ld is used when linking, flag to hardcode $libdir into a binary
-# during linking.  This must work even if $libdir does not exist.
-hardcode_libdir_flag_spec_ld=""
-
-# Whether we need a single "-rpath" flag with a separated argument.
-hardcode_libdir_separator=""
-
-# Set to "yes" if using DIR/libNAME${shared_ext} during linking hardcodes
-# DIR into the resulting binary.
-hardcode_direct=
-
-# Set to "yes" if using DIR/libNAME${shared_ext} during linking hardcodes
-# DIR into the resulting binary and the resulting library dependency is
-# "absolute",i.e impossible to change by setting ${shlibpath_var} if the
-# library is relocated.
-hardcode_direct_absolute=
-
-# Set to "yes" if using the -LDIR flag during linking hardcodes DIR
-# into the resulting binary.
-hardcode_minus_L=
-
-# Set to "yes" if using SHLIBPATH_VAR=DIR during linking hardcodes DIR
-# into the resulting binary.
-hardcode_shlibpath_var=
-
-# Set to "yes" if building a shared library automatically hardcodes DIR
-# into the library and all subsequent libraries and executables linked
-# against it.
-hardcode_automatic=
-
-# Set to yes if linker adds runtime paths of dependent libraries
-# to runtime path list.
-inherit_rpath=
-
-# Whether libtool must link a program against all its dependency libraries.
-link_all_deplibs=
-
-# Set to "yes" if exported symbols are required.
-always_export_symbols=
-
-# The commands to list exported symbols.
-export_symbols_cmds=""
-
-# Symbols that should not be listed in the preloaded symbols.
-exclude_expsyms=""
-
-# Symbols that must always be exported.
-include_expsyms=""
-
-# Commands necessary for linking programs (against libraries) with templates.
-prelink_cmds=""
-
-# Commands necessary for finishing linking programs.
-postlink_cmds=""
-
-# Specify filename containing input files.
-file_list_spec=""
-
-# How to hardcode a shared library path into an executable.
-hardcode_action=
-
-# The directories searched by this compiler when creating a shared library.
-compiler_lib_search_dirs=""
-
-# Dependencies to place before and after the objects being linked to
-# create a shared library.
-predep_objects=""
-postdep_objects=""
-predeps=""
-postdeps=""
-
-# The library search path used internally by the compiler when linking
-# a shared library.
-compiler_lib_search_path=""
-
-# ### END LIBTOOL TAG CONFIG: RC
-# ### BEGIN LIBTOOL TAG CONFIG: BINCC
-
-# A C compiler.
-LTCC="cc"
-
-
-# A language specific compiler.
-CC="cc"
-
-# ### END LIBTOOL TAG CONFIG: BINCC
-
-# ### BEGIN LIBTOOL TAG CONFIG: BINCXX
-
-# The linker used to build libraries.
-LD="/usr/bin/ld -m elf_x86_64"
-
-# How to create reloadable object files.
-reload_flag=" -r"
-reload_cmds="\$LD\$reload_flag -o \$output\$reload_objs"
-
-# Commands used to build an old-style archive.
-old_archive_cmds="\$AR \$AR_FLAGS \$oldlib\$oldobjs~\$RANLIB \$oldlib"
-
-# A language specific compiler.
-CC="c++"
-
-# Is the compiler the GNU compiler?
-with_gcc=yes
-
-# Compiler flag to turn off builtin functions.
-no_builtin_flag=" -fno-builtin"
-
-# Additional compiler flags for building library objects.
-pic_flag=" -fPIC -DPIC"
-
-# How to pass a linker flag through the compiler.
-wl="-Wl,"
-
-# Compiler flag to prevent dynamic linking.
-link_static_flag="-static"
-
-# Does compiler simultaneously support -c and -o options?
-compiler_c_o="yes"
-
-# Whether or not to add -lc for building shared libraries.
-build_libtool_need_lc=no
-
-# Whether or not to disallow shared libs when runtime libs are static.
-allow_libtool_libs_with_static_runtimes=no
-
-# Compiler flag to allow reflexive dlopens.
-export_dynamic_flag_spec="\${wl}--export-dynamic"
-
-# Compiler flag to generate shared objects directly from archives.
-whole_archive_flag_spec="\${wl}--whole-archive\$convenience \${wl}--no-whole-archive"
-
-# Whether the compiler copes with passing no objects directly.
-compiler_needs_object="no"
-
-# Create an old-style archive from a shared archive.
-old_archive_from_new_cmds=""
-
-# Create a temporary old-style archive to link instead of a shared archive.
-old_archive_from_expsyms_cmds=""
-
-# Commands used to build a shared archive.
-archive_cmds="\$CC \$pic_flag -shared \$predep_objects \$libobjs \$deplibs \$postdep_objects \$compiler_flags \${wl}-soname \$wl\$soname -o \$lib"
-archive_expsym_cmds="\$CC \$pic_flag -shared \$predep_objects \$libobjs \$deplibs \$postdep_objects \$compiler_flags \${wl}-soname \$wl\$soname \${wl}-retain-symbols-file \$wl\$export_symbols -o \$lib"
-
-# Commands used to build a loadable module if different from building
-# a shared archive.
-module_cmds=""
-module_expsym_cmds=""
-
-# Whether we are building with GNU ld or not.
-with_gnu_ld="yes"
-
-# Flag that allows shared libraries with undefined symbols to be built.
-allow_undefined_flag=""
-
-# Flag that enforces no undefined symbols.
-no_undefined_flag=""
-
-# Flag to hardcode $libdir into a binary during linking.
-# This must work even if $libdir does not exist
-hardcode_libdir_flag_spec="\${wl}-rpath \${wl}\$libdir"
-
-# If ld is used when linking, flag to hardcode $libdir into a binary
-# during linking.  This must work even if $libdir does not exist.
-hardcode_libdir_flag_spec_ld=""
-
-# Whether we need a single "-rpath" flag with a separated argument.
-hardcode_libdir_separator=""
-
-# Set to "yes" if using DIR/libNAME${shared_ext} during linking hardcodes
-# DIR into the resulting binary.
-hardcode_direct=no
-
-# Set to "yes" if using DIR/libNAME${shared_ext} during linking hardcodes
-# DIR into the resulting binary and the resulting library dependency is
-# "absolute",i.e impossible to change by setting ${shlibpath_var} if the
-# library is relocated.
-hardcode_direct_absolute=no
-
-# Set to "yes" if using the -LDIR flag during linking hardcodes DIR
-# into the resulting binary.
-hardcode_minus_L=no
-
-# Set to "yes" if using SHLIBPATH_VAR=DIR during linking hardcodes DIR
-# into the resulting binary.
-hardcode_shlibpath_var=unsupported
-
-# Set to "yes" if building a shared library automatically hardcodes DIR
-# into the library and all subsequent libraries and executables linked
-# against it.
-hardcode_automatic=no
-
-# Set to yes if linker adds runtime paths of dependent libraries
-# to runtime path list.
-inherit_rpath=no
-
-# Whether libtool must link a program against all its dependency libraries.
-link_all_deplibs=no
-
-# Set to "yes" if exported symbols are required.
-always_export_symbols=no
-
-# The commands to list exported symbols.
-export_symbols_cmds="\$NM \$libobjs \$convenience | \$global_symbol_pipe | \$SED 's/.* //' | sort | uniq > \$export_symbols"
-
-# Symbols that should not be listed in the preloaded symbols.
-exclude_expsyms="_GLOBAL_OFFSET_TABLE_|_GLOBAL__F[ID]_.*"
-
-# Symbols that must always be exported.
-include_expsyms=""
-
-# Commands necessary for linking programs (against libraries) with templates.
-prelink_cmds=""
-
-# Commands necessary for finishing linking programs.
-postlink_cmds=""
-
-# Specify filename containing input files.
-file_list_spec=""
-
-# How to hardcode a shared library path into an executable.
-hardcode_action=immediate
-
-# The directories searched by this compiler when creating a shared library.
-compiler_lib_search_dirs="/usr/lib/x86_64-linux-gnu/gcc/x86_64-linux-gnu/4.6.1 /usr/lib/x86_64-linux-gnu/gcc/x86_64-linux-gnu/4.6.1/../../.. /usr/lib/x86_64-linux-gnu"
-
-# Dependencies to place before and after the objects being linked to
-# create a shared library.
-predep_objects=""
-postdep_objects=""
-predeps=""
-postdeps="-lstdc++ -lm -lgcc_s -lc -lgcc_s"
-
-# The library search path used internally by the compiler when linking
-# a shared library.
-compiler_lib_search_path=""
-
-# ### END LIBTOOL TAG CONFIG: BINCXX
-

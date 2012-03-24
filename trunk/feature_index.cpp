@@ -97,8 +97,9 @@ int EncoderFeatureIndex::getID(const char *key) const {
   std::map <std::string, std::pair<int, unsigned int> >::iterator
       it = dic_.find(key);
   if (it == dic_.end()) {
-    dic_.insert(std::make_pair<std::string, std::pair<int, unsigned int> >
-                (key, std::make_pair<int, unsigned int>(maxid_, 1)));
+    dic_.insert(std::make_pair
+                (std::string(key),
+                 std::make_pair(maxid_, static_cast<unsigned int>(1))));
     const int n = maxid_;
     maxid_ += (key[0] == 'U' ? y_.size() : y_.size() * y_.size());
     return n;
@@ -244,7 +245,7 @@ void EncoderFeatureIndex::shrink(size_t freq, Allocator *allocator) {
     const std::string &key = it->first;
 
     if (it->second.second >= freq) {
-      old2new.insert(std::make_pair<int, int>(it->second.first, new_maxid));
+      old2new.insert(std::make_pair(it->second.first, new_maxid));
       it->second.first = new_maxid;
       new_maxid += (key[0] == 'U' ? y_.size() : y_.size() * y_.size());
       ++it;
@@ -335,9 +336,10 @@ bool EncoderFeatureIndex::convert(const char *text_filename,
     const size_t size = tokenize(line.get(), "\t ", column, 2);
     CHECK_FALSE(size == 2) << "format error: " << text_filename;
 
-    dic_.insert(std::make_pair<std::string, std::pair<int, unsigned int> >
-                (column[1],
-                 std::make_pair<int, unsigned int>(std::atoi(column[0]), 1)));
+    dic_.insert(std::make_pair
+                (std::string(column[1]),
+                 std::make_pair(std::atoi(column[0]),
+                                static_cast<unsigned int>(1))));
   }
 
   std::vector<double> alpha;
