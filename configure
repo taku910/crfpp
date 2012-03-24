@@ -2967,7 +2967,7 @@ fi
 
 # Define the identity of the package.
  PACKAGE=CRF++
- VERSION=0.56
+ VERSION=0.57
 
 
 cat >>confdefs.h <<_ACEOF
@@ -15273,6 +15273,7 @@ ac_compiler_gnu=$ac_cv_cxx_compiler_gnu
 
 
 
+
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for ANSI C header files" >&5
 $as_echo_n "checking for ANSI C header files... " >&6; }
 if ${ac_cv_header_stdc+:} false; then :
@@ -16616,9 +16617,9 @@ $as_echo "$enable_tls" >&6; }
 
 if test "$enable_tls" = "no"; then
 { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: __thread keyword is not supported on this environment. \
-Error handling of MeCab, e.g., MeCab::getLastError(), is not thread safe." >&5
+Error handling of CRF++, e.g., CRFPP::getLastError(), is not thread safe." >&5
 $as_echo "$as_me: WARNING: __thread keyword is not supported on this environment. \
-Error handling of MeCab, e.g., MeCab::getLastError(), is not thread safe." >&2;}
+Error handling of CRF++, e.g., CRFPP::getLastError(), is not thread safe." >&2;}
 else
 $as_echo "#define HAVE_TLS_KEYWORD 1" >>confdefs.h
 
