@@ -359,6 +359,7 @@ bool Encoder::learn(const char *templfile,
         x.push_back(_x);
       } else {
         delete _x;
+        continue;
       }
 
       _x->set_thread_id(line % thread_num);
