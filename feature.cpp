@@ -12,8 +12,12 @@
 #include "tagger.h"
 
 namespace CRFPP {
-static const char *BOS[4] = { "_B-1", "_B-2", "_B-3", "_B-4"};
-static const char *EOS[4] = { "_B+1", "_B+2", "_B+3", "_B+4"};
+const size_t kMaxContextSize = 8;
+
+const char *BOS[kMaxContextSize] = { "_B-1", "_B-2", "_B-3", "_B-4",
+                                     "_B-5", "_B-6", "_B-7", "_B-8" };
+const char *EOS[kMaxContextSize] = { "_B+1", "_B+2", "_B+3", "_B+4",
+                                     "_B+5", "_B+6", "_B+7", "_B+8" };
 
 const char *FeatureIndex::getIndex(const char *&p,
                                    size_t pos,
@@ -62,7 +66,8 @@ NEXT2:
 
   row *= neg;
 
-  if (row < -4 || row > 4 ||
+  if (row < -static_cast<int>(kMaxContextSize) ||
+      row > static_cast<int>(kMaxContextSize) ||
       col < 0 || col >= static_cast<int>(tagger.xsize())) {
     return 0;
   }
