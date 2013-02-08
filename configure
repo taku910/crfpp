@@ -2968,7 +2968,7 @@ fi
 
 # Define the identity of the package.
  PACKAGE=CRF++
- VERSION=0.57
+ VERSION=0.58
 
 
 cat >>confdefs.h <<_ACEOF

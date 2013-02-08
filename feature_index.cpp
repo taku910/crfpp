@@ -175,15 +175,17 @@ bool EncoderFeatureIndex::openTagSet(const char *filename) {
 
 bool DecoderFeatureIndex::open(const char *model_filename) {
   CHECK_FALSE(mmap_.open(model_filename)) << mmap_.what();
+  return openFromArray(mmap_.begin(), mmap_.file_size());
+}
 
-  const char *ptr = mmap_.begin();
+bool DecoderFeatureIndex::openFromArray(const char *ptr, size_t size) {
   unsigned int version_ = 0;
-
+  const char *end = ptr + size;
   read_static<unsigned int>(&ptr, &version_);
 
   CHECK_FALSE(version_ / 100 == version / 100)
       << "model version is different: " << version_
-      << " vs " << version << " : " << model_filename;
+      << " vs " << version;
   int type = 0;
   read_static<int>(&ptr, &type);
   read_static<double>(&ptr, &cost_factor_);
@@ -226,8 +228,7 @@ bool DecoderFeatureIndex::open(const char *model_filename) {
   alpha_float_ = reinterpret_cast<const float *>(ptr);
   ptr += sizeof(alpha_float_[0]) * maxid_;
 
-  CHECK_FALSE(ptr == mmap_.end()) <<
-      "model file is broken: " << model_filename;
+  CHECK_FALSE(ptr == end) << "model file is broken.";
 
   return true;
 }

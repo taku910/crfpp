@@ -86,7 +86,9 @@ extern "C" {
   CRFPP_DLL_EXTERN int      crfpp_clear(crfpp_t*);
   CRFPP_DLL_EXTERN int      crfpp_next(crfpp_t*);
   CRFPP_DLL_EXTERN int      crfpp_test(int, char **);
+  CRFPP_DLL_EXTERN int      crfpp_test2(const char *);
   CRFPP_DLL_EXTERN int      crfpp_learn(int, char **);
+  CRFPP_DLL_EXTERN int      crfpp_learn2(const char *);
   CRFPP_DLL_EXTERN const char*  crfpp_strerror(crfpp_t*);
   CRFPP_DLL_EXTERN const char*  crfpp_yname(crfpp_t*, size_t);
   CRFPP_DLL_EXTERN const char*  crfpp_y2(crfpp_t*, size_t);
@@ -336,9 +338,17 @@ CRFPP_DLL_EXTERN Tagger *createTagger(const char *arg);
 // e.g, argv[] = {"CRF++", "-m", "model", "-v3"};
 CRFPP_DLL_EXTERN Model *createModel(int argc, char **argv);
 
+// load model from [buf, buf+size].
+CRFPP_DLL_EXTERN Model *createModelFromArray(int argc, char **argv,
+                                             const char *buf, size_t size);
+
 // create CRFPP::Model instance with parameter in arg
 // e.g. arg = "-m model -v3";
 CRFPP_DLL_EXTERN Model *createModel(const char *arg);
+
+// load model from [buf, buf+size].
+CRFPP_DLL_EXTERN Model *createModelFromArray(const char *arg,
+                                             const char *buf, size_t size);
 
 // return error code of createTagger();
 CRFPP_DLL_EXTERN const char *getTaggerError();

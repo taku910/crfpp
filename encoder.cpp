@@ -424,37 +424,33 @@ bool Encoder::learn(const char *templfile,
 
   return true;
 }
-}
 
-int crfpp_learn(int argc, char **argv) {
-  static const CRFPP::Option long_options[] = {
-    {"freq",     'f', "1",      "INT",
-     "use features that occuer no less than INT(default 1)" },
-    {"maxiter" , 'm', "100000", "INT",
-     "set INT for max iterations in LBFGS routine(default 10k)" },
-    {"cost",     'c', "1.0",    "FLOAT",
-     "set FLOAT for cost parameter(default 1.0)" },
-    {"eta",      'e', "0.0001", "FLOAT",
-     "set FLOAT for termination criterion(default 0.0001)" },
-    {"convert",  'C',  0,       0,
-     "convert text model to binary model" },
-    {"textmodel", 't', 0,       0,
-     "build also text model file for debugging" },
-    {"algorithm",  'a', "CRF",   "(CRF|MIRA)", "select training algorithm" },
-    {"thread", 'p',   "0",       "INT",
-     "number of threads (default auto-detect)" },
-    {"shrinking-size", 'H', "20", "INT",
-     "set INT for number of iterations variable needs to "
-     " be optimal before considered for shrinking. (default 20)" },
-    {"version",  'v', 0,        0,       "show the version and exit" },
-    {"help",     'h', 0,        0,       "show this help and exit" },
-    {0, 0, 0, 0, 0}
-  };
+namespace {
+const CRFPP::Option long_options[] = {
+  {"freq",     'f', "1",      "INT",
+   "use features that occuer no less than INT(default 1)" },
+  {"maxiter" , 'm', "100000", "INT",
+   "set INT for max iterations in LBFGS routine(default 10k)" },
+  {"cost",     'c', "1.0",    "FLOAT",
+   "set FLOAT for cost parameter(default 1.0)" },
+  {"eta",      'e', "0.0001", "FLOAT",
+   "set FLOAT for termination criterion(default 0.0001)" },
+  {"convert",  'C',  0,       0,
+   "convert text model to binary model" },
+  {"textmodel", 't', 0,       0,
+   "build also text model file for debugging" },
+  {"algorithm",  'a', "CRF",   "(CRF|MIRA)", "select training algorithm" },
+  {"thread", 'p',   "0",       "INT",
+   "number of threads (default auto-detect)" },
+  {"shrinking-size", 'H', "20", "INT",
+   "set INT for number of iterations variable needs to "
+   " be optimal before considered for shrinking. (default 20)" },
+  {"version",  'v', 0,        0,       "show the version and exit" },
+  {"help",     'h', 0,        0,       "show this help and exit" },
+  {0, 0, 0, 0, 0}
+};
 
-  CRFPP::Param param;
-
-  param.open(argc, argv, long_options);
-
+int crfpp_learn(const Param &param) {
   if (!param.help_version()) {
     return 0;
   }
@@ -513,3 +509,18 @@ int crfpp_learn(int argc, char **argv) {
 
   return 0;
 }
+}  // namespace
+}  // CRFPP
+
+int crfpp_learn2(const char *argv) {
+  CRFPP::Param param;
+  param.open(argv, CRFPP::long_options);
+  return CRFPP::crfpp_learn(param);
+}
+
+int crfpp_learn(int argc, char **argv) {
+  CRFPP::Param param;
+  param.open(argc, argv, CRFPP::long_options);
+  return CRFPP::crfpp_learn(param);
+}
+
