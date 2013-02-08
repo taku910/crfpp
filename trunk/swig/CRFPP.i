@@ -15,6 +15,7 @@
 %feature("notabstract") CRFPP::Model;
 %feature("notabstract") CRFPP::Tagger;
 %ignore CRFPP::createModel;
+%ignore CRFPP::createModelFromArray;
 %ignore CRFPP::createTagger;
 %ignore CRFPP::getTaggerError;
 %ignore CRFPP::getLastError;

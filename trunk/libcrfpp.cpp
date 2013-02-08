@@ -74,6 +74,28 @@ crfpp_model_t* crfpp_model_new2(const char *arg) {
   return reinterpret_cast<crfpp_model_t *>(model);
 }
 
+crfpp_model_t* crfpp_model_from_array_new(int argc,  char **argv,
+                                          const char *buf,
+                                          size_t size) {
+  CRFPP::Model *model = CRFPP::createModelFromArray(argc, argv,
+                                                    buf, size);
+  if (!model) {
+    return 0;
+  }
+  return reinterpret_cast<crfpp_model_t *>(model);
+}
+
+crfpp_model_t* crfpp_model_from_array_new2(const char *arg,
+                                           const char *buf,
+                                           size_t size) {
+  CRFPP::Model *model = CRFPP::createModelFromArray(arg,
+                                                    buf, size);
+  if (!model) {
+    return 0;
+  }
+  return reinterpret_cast<crfpp_model_t *>(model);
+}
+
 void crfpp_model_destroy(crfpp_model_t *c) {
   CRFPP::Model *model = reinterpret_cast<CRFPP::Model *>(c);
   delete model;
