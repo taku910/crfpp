@@ -111,7 +111,7 @@ static const CRFPP::Option long_options[] = {
   {"help",   'h',  0,        0,       "show this help and exit" },
   {0, 0, 0, 0, 0}
 };
-}
+}  // namespace
 
 namespace CRFPP {
 
@@ -147,6 +147,22 @@ bool TaggerImpl::open(FeatureIndex *feature_index,
   return true;
 }
 
+bool ModelImpl::openFromArray(const Param &param,
+                              const char *buf,
+                              size_t size) {
+  nbest_ = param.get<int>("nbest");
+  vlevel_ = param.get<int>("verbose");
+  feature_index_.reset(new DecoderFeatureIndex);
+  if (!feature_index_->openFromArray(buf, size)) {
+    WHAT << feature_index_->what();
+    feature_index_.reset(0);
+    return false;
+  }
+  const double c = param.get<double>("cost-factor");
+  feature_index_->set_cost_factor(c);
+  return true;
+}
+
 bool ModelImpl::open(const Param &param) {
   nbest_ = param.get<int>("nbest");
   vlevel_ = param.get<int>("verbose");
@@ -173,6 +189,21 @@ bool ModelImpl::open(const char* arg) {
   Param param;
   CHECK_FALSE(param.open(arg, long_options)) << param.what();
   return open(param);
+}
+
+bool ModelImpl::openFromArray(int argc,  char** argv,
+                              const char *buf, size_t size) {
+  Param param;
+  CHECK_FALSE(param.open(argc, argv, long_options))
+      << param.what();
+  return openFromArray(param, buf, size);
+}
+
+bool ModelImpl::openFromArray(const char* arg,
+                              const char *buf, size_t size) {
+  Param param;
+  CHECK_FALSE(param.open(arg, long_options)) << param.what();
+  return openFromArray(param, buf, size);
 }
 
 bool TaggerImpl::open(const Param &param) {
@@ -762,9 +793,31 @@ Model *createModel(int argc, char **argv) {
   return model;
 }
 
+Model *createModelFromArray(int argc, char **argv,
+                            const char *buf, size_t size) {
+  ModelImpl *model = new ModelImpl();
+  if (!model->openFromArray(argc, argv, buf, size)) {
+    setGlobalError(model->what());
+    delete model;
+    return 0;
+  }
+  return model;
+}
+
 Model *createModel(const char *argv) {
   ModelImpl *model = new ModelImpl();
   if (!model->open(argv)) {
+    setGlobalError(model->what());
+    delete model;
+    return 0;
+  }
+  return model;
+}
+
+Model *createModelFromArray(const char *arg,
+                           const char *buf, size_t size) {
+  ModelImpl *model = new ModelImpl();
+  if (!model->openFromArray(arg, buf, size)) {
     setGlobalError(model->what());
     delete model;
     return 0;
@@ -779,13 +832,9 @@ const char *getTaggerError() {
 const char *getLastError() {
   return getGlobalError();
 }
-}   // namespace CRFPP
 
-int crfpp_test(int argc, char **argv) {
-  CRFPP::Param param;
-
-  param.open(argc, argv, long_options);
-
+namespace {
+int crfpp_test(const Param &param) {
   if (param.get<bool>("version")) {
     std::cout <<  param.version();
     return -1;
@@ -831,4 +880,18 @@ int crfpp_test(int argc, char **argv) {
   }
 
   return 0;
+}
+}  // namepace
+}  // namespace CRFPP
+
+int crfpp_test(int argc, char **argv) {
+  CRFPP::Param param;
+  param.open(argc, argv, long_options);
+  return CRFPP::crfpp_test(param);
+}
+
+int crfpp_test2(const char *arg) {
+  CRFPP::Param param;
+  param.open(arg, long_options);
+  return CRFPP::crfpp_test(param);
 }

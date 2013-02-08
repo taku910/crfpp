@@ -203,7 +203,7 @@ SED = /bin/sed
 SET_MAKE = 
 SHELL = /bin/sh
 STRIP = strip
-VERSION = 0.57
+VERSION = 0.58
 abs_builddir = /home/taku/proj/crfpp
 abs_srcdir = /home/taku/proj/crfpp
 abs_top_builddir = /home/taku/proj/crfpp
@@ -822,24 +822,24 @@ dist-hook:
 	done
 
 win-dist:
-	rm -f CRF++-0.57.zip
-	mkdir -p CRF++-0.57/doc
-	mkdir -p CRF++-0.57/example
-	mkdir -p CRF++-0.57/sdk
-	cp -f crf_learn.exe CRF++-0.57
-	cp -f crf_test.exe CRF++-0.57
-	cp -f libcrfpp.dll CRF++-0.57
-	cp -f libcrfpp.lib CRF++-0.57/sdk
-	cp -f crfpp.h CRF++-0.57/sdk
-#	cp -f sdk/model CRF++-0.57/sdk
-	cp -f sdk/example.cpp CRF++-0.57/sdk	
-	cp -fr doc/*.html doc/*.css doc/doxygen CRF++-0.57/doc
-	cp -f README COPYING AUTHORS LGPL BSD CRF++-0.57
-	cp -fr example/* CRF++-0.57/example
-	find CRF++-0.57 -name CVS | xargs rm -rf
-	find CRF++-0.57 -name .svn | xargs rm -rf	
-	zip -r CRF++-0.57.zip CRF++-0.57
-	rm -fr CRF++-0.57
+	rm -f CRF++-0.58.zip
+	mkdir -p CRF++-0.58/doc
+	mkdir -p CRF++-0.58/example
+	mkdir -p CRF++-0.58/sdk
+	cp -f crf_learn.exe CRF++-0.58
+	cp -f crf_test.exe CRF++-0.58
+	cp -f libcrfpp.dll CRF++-0.58
+	cp -f libcrfpp.lib CRF++-0.58/sdk
+	cp -f crfpp.h CRF++-0.58/sdk
+#	cp -f sdk/model CRF++-0.58/sdk
+	cp -f sdk/example.cpp CRF++-0.58/sdk	
+	cp -fr doc/*.html doc/*.css doc/doxygen CRF++-0.58/doc
+	cp -f README COPYING AUTHORS LGPL BSD CRF++-0.58
+	cp -fr example/* CRF++-0.58/example
+	find CRF++-0.58 -name CVS | xargs rm -rf
+	find CRF++-0.58 -name .svn | xargs rm -rf	
+	zip -r CRF++-0.58.zip CRF++-0.58
+	rm -fr CRF++-0.58
 
 dist-all-package:
 	(test -f Makefile) && $(MAKE) distclean
@@ -852,14 +852,14 @@ dist-all-package:
 
 script-dist:
 	for subdir in perl ruby python java; do \
-	  rm -fr CRF++-$${subdir}-0.57; \
-	  mkdir CRF++-$${subdir}-0.57; \
-	  cp -r $${subdir}/* CRF++-$${subdir}-0.57; \
-	  cp -r doc/bindings.html  CRF++-$${subdir}-0.57; \
-	  find ./CRF++-$${subdir}-0.57 -type d -name CVS | xargs rm -fr; \
-	  rm -f CRF++-$${subdir}-0.57/*~; \
-	  tar zcfv CRF++-$${subdir}-0.57.tar.gz CRF++-$${subdir}-0.57; \
-	  rm -fr CRF++-$${subdir}-0.57; \
+	  rm -fr CRF++-$${subdir}-0.58; \
+	  mkdir CRF++-$${subdir}-0.58; \
+	  cp -r $${subdir}/* CRF++-$${subdir}-0.58; \
+	  cp -r doc/bindings.html  CRF++-$${subdir}-0.58; \
+	  find ./CRF++-$${subdir}-0.58 -type d -name CVS | xargs rm -fr; \
+	  rm -f CRF++-$${subdir}-0.58/*~; \
+	  tar zcfv CRF++-$${subdir}-0.58.tar.gz CRF++-$${subdir}-0.58; \
+	  rm -fr CRF++-$${subdir}-0.58; \
 	done
 
 script-clean:
@@ -869,8 +869,8 @@ script-clean:
 	(cd java; $(MAKE) clean;)
 
 export-package:
-	python googlecode_upload.py -p crfpp -s crfpp      -u taku@chasen.org -w `cat ~/.googlecode_upload_password` CRF++-0.57.tar.gz
-	python googlecode_upload.py -p crfpp -s crfpp-win  -u taku@chasen.org -w `cat ~/.googlecode_upload_password` CRF++-0.57.zip
+	python googlecode_upload.py -p crfpp -s crfpp      -u taku@chasen.org -w `cat ~/.googlecode_upload_password` CRF++-0.58.tar.gz
+	python googlecode_upload.py -p crfpp -s crfpp-win  -u taku@chasen.org -w `cat ~/.googlecode_upload_password` CRF++-0.58.zip
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

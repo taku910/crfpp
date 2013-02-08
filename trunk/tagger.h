@@ -30,6 +30,10 @@ class ModelImpl : public Model {
   virtual ~ModelImpl() {}
   bool open(int argc,  char** argv);
   bool open(const char* arg);
+  bool openFromArray(int argc,  char** argv,
+                     const char *buf, size_t size);
+  bool openFromArray(const char* arg,
+                     const char *buf, size_t size);
   Tagger *createTagger() const;
   const char* what() { return what_.str(); }
 
@@ -39,6 +43,8 @@ class ModelImpl : public Model {
 
  private:
   bool open(const Param &param);
+  bool openFromArray(const Param &param,
+                     const char *buf, size_t size);
 
   whatlog       what_;
   unsigned int nbest_;
