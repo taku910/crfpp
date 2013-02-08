@@ -44,6 +44,8 @@ extern "C" {
   /* C interface */
   CRFPP_DLL_EXTERN crfpp_model_t* crfpp_model_new(int,  char**);
   CRFPP_DLL_EXTERN crfpp_model_t* crfpp_model_new2(const char*);
+  CRFPP_DLL_EXTERN crfpp_model_t* crfpp_model_from_array_new(int,  char**, const char *, size_t);
+  CRFPP_DLL_EXTERN crfpp_model_t* crfpp_model_from_array_new2(const char*, const char *, size_t);
   CRFPP_DLL_EXTERN void           crfpp_model_destroy(crfpp_model_t*);
   CRFPP_DLL_EXTERN const char *   crfpp_model_strerror(crfpp_model_t *);
   CRFPP_DLL_EXTERN crfpp_t*       crfpp_model_new_tagger(crfpp_model_t *);
@@ -129,6 +131,17 @@ class CRFPP_DLL_CLASS_EXTERN Model {
 
   // open model with parameter arg, e.g. arg = "-m model -v3";
   virtual bool open(const char* arg) = 0;
+
+  // open model with parameters in argv[].
+  // e.g, argv[] = {"CRF++", "-v3"};
+  virtual bool openFromArray(int argc,  char** argv,
+                             const char *model_buf,
+                             size_t model_size) = 0;
+
+  // open model with parameter arg, e.g. arg = "-m model -v3";
+  virtual bool openFromArray(const char* arg,
+                             const char *model_buf,
+                             size_t model_size) = 0;
 #endif
 
   // create Tagger object. Returned object shared the same
@@ -340,7 +353,8 @@ CRFPP_DLL_EXTERN Model *createModel(int argc, char **argv);
 
 // load model from [buf, buf+size].
 CRFPP_DLL_EXTERN Model *createModelFromArray(int argc, char **argv,
-                                             const char *buf, size_t size);
+                                             const char *model_buf,
+                                             size_t model_size);
 
 // create CRFPP::Model instance with parameter in arg
 // e.g. arg = "-m model -v3";
@@ -348,7 +362,8 @@ CRFPP_DLL_EXTERN Model *createModel(const char *arg);
 
 // load model from [buf, buf+size].
 CRFPP_DLL_EXTERN Model *createModelFromArray(const char *arg,
-                                             const char *buf, size_t size);
+                                             const char *model_buf,
+                                             size_t model_size);
 
 // return error code of createTagger();
 CRFPP_DLL_EXTERN const char *getTaggerError();
