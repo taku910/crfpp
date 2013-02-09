@@ -55,13 +55,6 @@ extern "C" {
 #define O_BINARY 0
 #endif
 
-#if !defined(_WIN32) || defined(__CYGWIN__)
-namespace {
-int open__(const char* name, int flag) { return open(name, flag); }
-int close__(int fd) { return close(fd); }
-}
-#endif
-
 namespace CRFPP {
 
 template <class T> class Mmap {
@@ -157,7 +150,7 @@ template <class T> class Mmap {
     else
       CHECK_FALSE(false) << "unknown open mode: " << filename;
 
-    CHECK_FALSE((fd = open__(filename, flag | O_BINARY)) >= 0)
+    CHECK_FALSE((fd = ::open(filename, flag | O_BINARY)) >= 0)
         << "open failed: " << filename;
 
     CHECK_FALSE(fstat(fd, &st) >= 0)
@@ -180,7 +173,7 @@ template <class T> class Mmap {
     CHECK_FALSE(read(fd, text, length) >= 0)
         << "read() failed: " << filename;
 #endif
-    close__(fd);
+    ::close(fd);
     fd = -1;
 
     return true;
@@ -188,7 +181,7 @@ template <class T> class Mmap {
 
   void close() {
     if (fd >= 0) {
-      close__(fd);
+      ::close(fd);
       fd = -1;
     }
 
@@ -199,9 +192,9 @@ template <class T> class Mmap {
 #else
       if (flag == O_RDWR) {
         int fd2;
-        if ((fd2 = open__(fileName.c_str(), O_RDWR)) >= 0) {
+        if ((fd2 = ::open(fileName.c_str(), O_RDWR)) >= 0) {
           write(fd2, text, length);
-          close__(fd2);
+	  ::close(fd2);
         }
       }
       delete [] text;

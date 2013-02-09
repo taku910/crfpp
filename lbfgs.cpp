@@ -41,9 +41,9 @@ static const double lb3_1_stpmax = 1e20;
 static const int lb3_1_mp = 6;
 static const int lb3_1_lp = 6;
 
-inline double pi(double x, double y) {
-  return CRFPP::sigma(x) == CRFPP::sigma(y) ?x : 0.0;
-}
+// inline double pi(double x, double y) {
+//   return CRFPP::sigma(x) == CRFPP::sigma(y) ?x : 0.0;
+// }
 
 inline void daxpy_(int n, double da, const double *dx, double *dy) {
   for (int i = 0; i < n; ++i)
