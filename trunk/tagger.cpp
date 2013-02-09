@@ -282,7 +282,7 @@ bool TaggerImpl::set_model(const Model &model) {
     // allocator_ => reuse
   }
   mode_ = TEST_SHARED;
-  const ModelImpl *model_impl = dynamic_cast<const ModelImpl *>(&model);
+  const ModelImpl *model_impl = static_cast<const ModelImpl *>(&model);
   feature_index_ = model_impl->feature_index();
   nbest_ = model_impl->nbest();
   vlevel_ = model_impl->vlevel();
