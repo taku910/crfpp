@@ -35,6 +35,10 @@ public class Model {
     }
   }
 
+  public String getTemplate() {
+    return CRFPPJNI.Model_getTemplate(swigCPtr, this);
+  }
+
   public Tagger createTagger() {
     long cPtr = CRFPPJNI.Model_createTagger(swigCPtr, this);
     return (cPtr == 0) ? null : new Tagger(cPtr, false);

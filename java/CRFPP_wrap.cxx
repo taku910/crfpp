@@ -297,6 +297,35 @@ CRFPP::Tagger* new_CRFPP_Tagger (const char *arg) {
 extern "C" {
 #endif
 
+SWIGEXPORT jstring JNICALL Java_org_chasen_crfpp_CRFPPJNI_Model_1getTemplate(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  CRFPP::Model *arg1 = (CRFPP::Model *) 0 ;
+  char *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(CRFPP::Model **)&jarg1; 
+  {
+    try {
+      result = (char *)((CRFPP::Model const *)arg1)->getTemplate(); 
+    }
+    catch (char *e) {
+      {
+        SWIG_JavaException(jenv, SWIG_RuntimeError, e); return 0; 
+      }; 
+    }
+    catch (const char *e) {
+      {
+        SWIG_JavaException(jenv, SWIG_RuntimeError, (char*)e); return 0; 
+      }; 
+    }
+  }
+  if (result) jresult = jenv->NewStringUTF((const char *)result);
+  return jresult;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_org_chasen_crfpp_CRFPPJNI_Model_1createTagger(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   CRFPP::Model *arg1 = (CRFPP::Model *) 0 ;
