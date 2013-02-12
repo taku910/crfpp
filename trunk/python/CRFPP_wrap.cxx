@@ -3411,6 +3411,38 @@ SWIG_From_size_t  (size_t value)
 #ifdef __cplusplus
 extern "C" {
 #endif
+SWIGINTERN PyObject *_wrap_Model_getTemplate(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  CRFPP::Model *arg1 = (CRFPP::Model *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Model_getTemplate",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_CRFPP__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Model_getTemplate" "', argument " "1"" of type '" "CRFPP::Model const *""'"); 
+  }
+  arg1 = reinterpret_cast< CRFPP::Model * >(argp1);
+  {
+    try {
+      result = (char *)((CRFPP::Model const *)arg1)->getTemplate(); 
+    }
+    catch (char *e) {
+      SWIG_exception (SWIG_RuntimeError, e); 
+    }
+    catch (const char *e) {
+      SWIG_exception (SWIG_RuntimeError, (char*)e); 
+    }
+  }
+  resultobj = SWIG_FromCharPtr((const char *)result);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Model_createTagger(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CRFPP::Model *arg1 = (CRFPP::Model *) 0 ;
@@ -5203,6 +5235,7 @@ SWIGINTERN PyObject *Tagger_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObjec
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { (char *)"Model_getTemplate", _wrap_Model_getTemplate, METH_VARARGS, NULL},
 	 { (char *)"Model_createTagger", _wrap_Model_createTagger, METH_VARARGS, NULL},
 	 { (char *)"Model_what", _wrap_Model_what, METH_VARARGS, NULL},
 	 { (char *)"delete_Model", _wrap_delete_Model, METH_VARARGS, NULL},

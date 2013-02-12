@@ -2115,6 +2115,40 @@ SWIG_From_size_t  (size_t value)
 swig_class SwigClassModel;
 
 SWIGINTERN VALUE
+_wrap_Model_getTemplate(int argc, VALUE *argv, VALUE self) {
+  CRFPP::Model *arg1 = (CRFPP::Model *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  char *result = 0 ;
+  VALUE vresult = Qnil;
+  
+  if ((argc < 0) || (argc > 0)) {
+    rb_raise(rb_eArgError, "wrong # of arguments(%d for 0)",argc); SWIG_fail;
+  }
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_CRFPP__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), Ruby_Format_TypeError( "", "CRFPP::Model const *","getTemplate", 1, self )); 
+  }
+  arg1 = reinterpret_cast< CRFPP::Model * >(argp1);
+  {
+    try {
+      result = (char *)((CRFPP::Model const *)arg1)->getTemplate(); 
+    }
+    catch (char *e) {
+      SWIG_exception (SWIG_RuntimeError, e); 
+    }
+    catch (const char *e) {
+      SWIG_exception (SWIG_RuntimeError, (char*)e); 
+    }
+  }
+  vresult = SWIG_FromCharPtr((const char *)result);
+  return vresult;
+fail:
+  return Qnil;
+}
+
+
+SWIGINTERN VALUE
 _wrap_Model_createTagger(int argc, VALUE *argv, VALUE self) {
   CRFPP::Model *arg1 = (CRFPP::Model *) 0 ;
   void *argp1 = 0 ;
@@ -4215,6 +4249,7 @@ SWIGEXPORT void Init_CRFPP(void) {
   SWIG_TypeClientData(SWIGTYPE_p_CRFPP__Model, (void *) &SwigClassModel);
   rb_define_alloc_func(SwigClassModel.klass, _wrap_Model_allocate);
   rb_define_method(SwigClassModel.klass, "initialize", VALUEFUNC(_wrap_new_Model), -1);
+  rb_define_method(SwigClassModel.klass, "getTemplate", VALUEFUNC(_wrap_Model_getTemplate), -1);
   rb_define_method(SwigClassModel.klass, "createTagger", VALUEFUNC(_wrap_Model_createTagger), -1);
   rb_define_method(SwigClassModel.klass, "what", VALUEFUNC(_wrap_Model_what), -1);
   SwigClassModel.mark = 0;

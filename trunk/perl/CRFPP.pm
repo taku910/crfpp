@@ -57,6 +57,7 @@ use vars qw(@ISA %OWNER %ITERATORS %BLESSEDMEMBERS);
 @ISA = qw( CRFPP );
 %OWNER = ();
 %ITERATORS = ();
+*getTemplate = *CRFPPc::Model_getTemplate;
 *createTagger = *CRFPPc::Model_createTagger;
 *what = *CRFPPc::Model_what;
 sub DESTROY {

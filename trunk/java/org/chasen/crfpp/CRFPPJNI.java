@@ -9,6 +9,7 @@
 package org.chasen.crfpp;
 
 public class CRFPPJNI {
+  public final static native String Model_getTemplate(long jarg1, Model jarg1_);
   public final static native long Model_createTagger(long jarg1, Model jarg1_);
   public final static native String Model_what(long jarg1, Model jarg1_);
   public final static native void delete_Model(long jarg1);

@@ -1920,6 +1920,44 @@ SWIGCLASS_STATIC int swig_magic_readonly(pTHX_ SV *SWIGUNUSEDPARM(sv), MAGIC *SW
 #ifdef __cplusplus
 extern "C" {
 #endif
+XS(_wrap_Model_getTemplate) {
+  {
+    CRFPP::Model *arg1 = (CRFPP::Model *) 0 ;
+    void *argp1 = 0 ;
+    int res1 = 0 ;
+    int argvi = 0;
+    char *result = 0 ;
+    dXSARGS;
+    
+    if ((items < 1) || (items > 1)) {
+      SWIG_croak("Usage: Model_getTemplate(self);");
+    }
+    res1 = SWIG_ConvertPtr(ST(0), &argp1,SWIGTYPE_p_CRFPP__Model, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Model_getTemplate" "', argument " "1"" of type '" "CRFPP::Model const *""'"); 
+    }
+    arg1 = reinterpret_cast< CRFPP::Model * >(argp1);
+    {
+      try {
+        result = (char *)((CRFPP::Model const *)arg1)->getTemplate(); 
+      }
+      catch (char *e) {
+        SWIG_exception (SWIG_RuntimeError, e); 
+      }
+      catch (const char *e) {
+        SWIG_exception (SWIG_RuntimeError, (char*)e); 
+      }
+    }
+    ST(argvi) = SWIG_FromCharPtr((const char *)result); argvi++ ;
+    
+    XSRETURN(argvi);
+  fail:
+    
+    SWIG_croak_null();
+  }
+}
+
+
 XS(_wrap_Model_createTagger) {
   {
     CRFPP::Model *arg1 = (CRFPP::Model *) 0 ;
@@ -4088,6 +4126,7 @@ static swig_variable_info swig_variables[] = {
 {0,0,0,0}
 };
 static swig_command_info swig_commands[] = {
+{"CRFPPc::Model_getTemplate", _wrap_Model_getTemplate},
 {"CRFPPc::Model_createTagger", _wrap_Model_createTagger},
 {"CRFPPc::Model_what", _wrap_Model_what},
 {"CRFPPc::delete_Model", _wrap_delete_Model},
