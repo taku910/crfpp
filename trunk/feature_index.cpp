@@ -25,6 +25,20 @@ template <class T> static inline void read_static(const char **ptr,
   const char *r = read_ptr(ptr, sizeof(T));
   memcpy(value, r, sizeof(T));
 }
+
+void make_templs(const std::vector<std::string> unigram_templs,
+                 const std::vector<std::string> bigram_templs,
+                 std::string *templs) {
+  templs->clear();
+  for (size_t i = 0; i < unigram_templs.size(); ++i) {
+    templs->append(unigram_templs[i]);
+    templs->append("\n");
+  }
+  for (size_t i = 0; i < bigram_templs.size(); ++i) {
+    templs->append(bigram_templs[i]);
+    templs->append("\n");
+  }
+}
 }  // namespace
 
 char *Allocator::strdup(const char *p) {
@@ -134,6 +148,8 @@ bool EncoderFeatureIndex::openTemplate(const char *filename) {
     }
   }
 
+  make_templs(unigram_templs_, bigram_templs_, &templs_);
+
   return true;
 }
 
@@ -221,6 +237,8 @@ bool DecoderFeatureIndex::openFromArray(const char *ptr, size_t size) {
     }
     while (tmpl_str[pos++] != '\0') {}
   }
+
+  make_templs(unigram_templs_, bigram_templs_, &templs_);
 
   da_.set_array(const_cast<char *>(ptr));
   ptr += dsize;
@@ -480,6 +498,10 @@ bool EncoderFeatureIndex::save(const char *filename,
   }
 
   return true;
+}
+
+const char *FeatureIndex::getTemplate() const {
+  return templs_.c_str();
 }
 
 void FeatureIndex::calcCost(Node *n) const {

@@ -46,6 +46,7 @@ extern "C" {
   CRFPP_DLL_EXTERN crfpp_model_t* crfpp_model_new2(const char*);
   CRFPP_DLL_EXTERN crfpp_model_t* crfpp_model_from_array_new(int,  char**, const char *, size_t);
   CRFPP_DLL_EXTERN crfpp_model_t* crfpp_model_from_array_new2(const char*, const char *, size_t);
+  CRFPP_DLL_EXTERN const char *   crfpp_model_get_template(crfpp_model_t*);
   CRFPP_DLL_EXTERN void           crfpp_model_destroy(crfpp_model_t*);
   CRFPP_DLL_EXTERN const char *   crfpp_model_strerror(crfpp_model_t *);
   CRFPP_DLL_EXTERN crfpp_t*       crfpp_model_new_tagger(crfpp_model_t *);
@@ -143,6 +144,8 @@ class CRFPP_DLL_CLASS_EXTERN Model {
                              const char *model_buf,
                              size_t model_size) = 0;
 #endif
+  // return template string embedded in this model file.
+  virtual const char *getTemplate() const = 0;
 
   // create Tagger object. Returned object shared the same
   // model object

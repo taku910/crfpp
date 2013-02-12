@@ -6152,6 +6152,7 @@ config.status:1175: creating Makefile
 config.status:1175: creating Makefile.msvc
 config.status:1175: creating swig/version.h
 config.status:1175: creating config.h
+config.status:1356: config.h is unchanged
 config.status:1404: executing depfiles commands
 config.status:1404: executing libtool commands
 configure:19372: WARNING: unrecognized options: --with-charset

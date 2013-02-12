@@ -74,6 +74,8 @@ class FeatureIndex {
                            check_max_xsize_(false), max_xsize_(0) {}
   virtual ~FeatureIndex() {}
 
+  const char *getTemplate() const;
+
  protected:
   virtual int getID(const char *str) const = 0;
   const char *getIndex(const char *&p,
@@ -93,6 +95,7 @@ class FeatureIndex {
   std::vector<std::string>  unigram_templs_;
   std::vector<std::string>  bigram_templs_;
   std::vector<std::string>  y_;
+  std::string               templs_;
   whatlog                   what_;
 };
 

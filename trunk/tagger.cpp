@@ -206,6 +206,13 @@ bool ModelImpl::openFromArray(const char* arg,
   return openFromArray(param, buf, size);
 }
 
+const char *ModelImpl::getTemplate() const {
+  if (feature_index_.get()) {
+    return feature_index_->getTemplate();
+  }
+  return 0;
+}
+
 bool TaggerImpl::open(const Param &param) {
   close();
 

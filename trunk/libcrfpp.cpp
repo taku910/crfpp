@@ -96,6 +96,11 @@ crfpp_model_t* crfpp_model_from_array_new2(const char *arg,
   return reinterpret_cast<crfpp_model_t *>(model);
 }
 
+const char *   crfpp_model_get_template(crfpp_model_t *c) {
+  return reinterpret_cast<const char *>(
+      reinterpret_cast<CRFPP::Model *>(c)->getTemplate());
+}
+
 void crfpp_model_destroy(crfpp_model_t *c) {
   CRFPP::Model *model = reinterpret_cast<CRFPP::Model *>(c);
   delete model;
