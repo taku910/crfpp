@@ -40,6 +40,7 @@ class ModelImpl : public Model {
   unsigned int nbest() const { return nbest_; }
   unsigned int vlevel() const { return vlevel_; }
   FeatureIndex *feature_index() const { return feature_index_.get(); }
+  const char *getTemplate() const;
 
  private:
   bool open(const Param &param);
