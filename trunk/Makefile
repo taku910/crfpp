@@ -34,8 +34,8 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-build_triplet = x86_64-unknown-linux-gnu
-host_triplet = x86_64-unknown-linux-gnu
+build_triplet = x86_64-apple-darwin13.1.0
+host_triplet = x86_64-apple-darwin13.1.0
 bin_PROGRAMS = crf_learn$(EXEEXT) crf_test$(EXEEXT)
 subdir = .
 DIST_COMMON = README $(am__configure_deps) $(include_HEADERS) \
@@ -139,13 +139,13 @@ distuninstallcheck_listfiles = find . -type f -print
 am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
   | sed 's|^\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /home/taku/proj/crfpp/missing --run aclocal-1.11
+ACLOCAL = ${SHELL} /Users/taku/proj/crfpp/missing --run aclocal-1.11
 AMTAR = $${TAR-tar}
 AR = ar
-AUTOCONF = ${SHELL} /home/taku/proj/crfpp/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/taku/proj/crfpp/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/taku/proj/crfpp/missing --run automake-1.11
-AWK = gawk
+AUTOCONF = ${SHELL} /Users/taku/proj/crfpp/missing --run autoconf
+AUTOHEADER = ${SHELL} /Users/taku/proj/crfpp/missing --run autoheader
+AUTOMAKE = ${SHELL} /Users/taku/proj/crfpp/missing --run automake-1.11
+AWK = awk
 CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -O3 -Wall
@@ -159,37 +159,37 @@ CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
 DLLTOOL = false
-DSYMUTIL = 
+DSYMUTIL = dsymutil
 DUMPBIN = 
-ECHO_C = 
-ECHO_N = -n
+ECHO_C = \c
+ECHO_N = 
 ECHO_T = 
-EGREP = /bin/grep -E
+EGREP = /usr/bin/grep -E
 EXEEXT = 
-FGREP = /bin/grep -F
-GREP = /bin/grep
+FGREP = /usr/bin/grep -F
+GREP = /usr/bin/grep
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-LD = /usr/bin/ld -m elf_x86_64
+LD = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld
 LDFLAGS = 
 LIBOBJS = 
 LIBS = -lpthread -lpthread -lm -lm -lm 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
-LIPO = 
+LIPO = lipo
 LN_S = ln -s
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/taku/proj/crfpp/missing --run makeinfo
+MAKEINFO = ${SHELL} /Users/taku/proj/crfpp/missing --run makeinfo
 MANIFEST_TOOL = :
-MKDIR_P = /bin/mkdir -p
-NM = /usr/bin/nm -B
-NMEDIT = 
-OBJDUMP = objdump
+MKDIR_P = /usr/local/bin/gmkdir -p
+NM = /usr/bin/nm
+NMEDIT = nmedit
+OBJDUMP = false
 OBJEXT = o
-OTOOL = 
-OTOOL64 = 
+OTOOL = otool
+OTOOL64 = :
 PACKAGE = CRF++
 PACKAGE_BUGREPORT = 
 PACKAGE_NAME = 
@@ -199,15 +199,15 @@ PACKAGE_URL =
 PACKAGE_VERSION = 
 PATH_SEPARATOR = :
 RANLIB = ranlib
-SED = /bin/sed
+SED = /usr/bin/sed
 SET_MAKE = 
 SHELL = /bin/sh
 STRIP = strip
-VERSION = 0.58
-abs_builddir = /home/taku/proj/crfpp
-abs_srcdir = /home/taku/proj/crfpp
-abs_top_builddir = /home/taku/proj/crfpp
-abs_top_srcdir = /home/taku/proj/crfpp
+VERSION = 0.59
+abs_builddir = /Users/taku/proj/crfpp
+abs_srcdir = /Users/taku/proj/crfpp
+abs_top_builddir = /Users/taku/proj/crfpp
+abs_top_srcdir = /Users/taku/proj/crfpp
 ac_ct_AR = ar
 ac_ct_CC = gcc
 ac_ct_CXX = g++
@@ -218,32 +218,32 @@ am__quote =
 am__tar = $${TAR-tar} chof - "$$tardir"
 am__untar = $${TAR-tar} xf -
 bindir = ${exec_prefix}/bin
-build = x86_64-unknown-linux-gnu
+build = x86_64-apple-darwin13.1.0
 build_alias = 
 build_cpu = x86_64
-build_os = linux-gnu
-build_vendor = unknown
+build_os = darwin13.1.0
+build_vendor = apple
 builddir = .
 datadir = ${datarootdir}
 datarootdir = ${prefix}/share
 docdir = ${datarootdir}/doc/${PACKAGE}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
-host = x86_64-unknown-linux-gnu
+host = x86_64-apple-darwin13.1.0
 host_alias = 
 host_cpu = x86_64
-host_os = linux-gnu
-host_vendor = unknown
+host_os = darwin13.1.0
+host_vendor = apple
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/taku/proj/crfpp/install-sh
+install_sh = ${SHELL} /Users/taku/proj/crfpp/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
 localstatedir = ${prefix}/var
 mandir = ${datarootdir}/man
-mkdir_p = /bin/mkdir -p
+mkdir_p = /usr/local/bin/gmkdir -p
 oldincludedir = /usr/include
 pdfdir = ${docdir}
 prefix = /usr/local
@@ -822,24 +822,24 @@ dist-hook:
 	done
 
 win-dist:
-	rm -f CRF++-0.58.zip
-	mkdir -p CRF++-0.58/doc
-	mkdir -p CRF++-0.58/example
-	mkdir -p CRF++-0.58/sdk
-	cp -f crf_learn.exe CRF++-0.58
-	cp -f crf_test.exe CRF++-0.58
-	cp -f libcrfpp.dll CRF++-0.58
-	cp -f libcrfpp.lib CRF++-0.58/sdk
-	cp -f crfpp.h CRF++-0.58/sdk
-#	cp -f sdk/model CRF++-0.58/sdk
-	cp -f sdk/example.cpp CRF++-0.58/sdk	
-	cp -fr doc/*.html doc/*.css doc/doxygen CRF++-0.58/doc
-	cp -f README COPYING AUTHORS LGPL BSD CRF++-0.58
-	cp -fr example/* CRF++-0.58/example
-	find CRF++-0.58 -name CVS | xargs rm -rf
-	find CRF++-0.58 -name .svn | xargs rm -rf	
-	zip -r CRF++-0.58.zip CRF++-0.58
-	rm -fr CRF++-0.58
+	rm -f CRF++-0.59.zip
+	mkdir -p CRF++-0.59/doc
+	mkdir -p CRF++-0.59/example
+	mkdir -p CRF++-0.59/sdk
+	cp -f crf_learn.exe CRF++-0.59
+	cp -f crf_test.exe CRF++-0.59
+	cp -f libcrfpp.dll CRF++-0.59
+	cp -f libcrfpp.lib CRF++-0.59/sdk
+	cp -f crfpp.h CRF++-0.59/sdk
+#	cp -f sdk/model CRF++-0.59/sdk
+	cp -f sdk/example.cpp CRF++-0.59/sdk	
+	cp -fr doc/*.html doc/*.css doc/doxygen CRF++-0.59/doc
+	cp -f README COPYING AUTHORS LGPL BSD CRF++-0.59
+	cp -fr example/* CRF++-0.59/example
+	find CRF++-0.59 -name CVS | xargs rm -rf
+	find CRF++-0.59 -name .svn | xargs rm -rf	
+	zip -r CRF++-0.59.zip CRF++-0.59
+	rm -fr CRF++-0.59
 
 dist-all-package:
 	(test -f Makefile) && $(MAKE) distclean
@@ -852,14 +852,14 @@ dist-all-package:
 
 script-dist:
 	for subdir in perl ruby python java; do \
-	  rm -fr CRF++-$${subdir}-0.58; \
-	  mkdir CRF++-$${subdir}-0.58; \
-	  cp -r $${subdir}/* CRF++-$${subdir}-0.58; \
-	  cp -r doc/bindings.html  CRF++-$${subdir}-0.58; \
-	  find ./CRF++-$${subdir}-0.58 -type d -name CVS | xargs rm -fr; \
-	  rm -f CRF++-$${subdir}-0.58/*~; \
-	  tar zcfv CRF++-$${subdir}-0.58.tar.gz CRF++-$${subdir}-0.58; \
-	  rm -fr CRF++-$${subdir}-0.58; \
+	  rm -fr CRF++-$${subdir}-0.59; \
+	  mkdir CRF++-$${subdir}-0.59; \
+	  cp -r $${subdir}/* CRF++-$${subdir}-0.59; \
+	  cp -r doc/bindings.html  CRF++-$${subdir}-0.59; \
+	  find ./CRF++-$${subdir}-0.59 -type d -name CVS | xargs rm -fr; \
+	  rm -f CRF++-$${subdir}-0.59/*~; \
+	  tar zcfv CRF++-$${subdir}-0.59.tar.gz CRF++-$${subdir}-0.59; \
+	  rm -fr CRF++-$${subdir}-0.59; \
 	done
 
 script-clean:
@@ -869,8 +869,8 @@ script-clean:
 	(cd java; $(MAKE) clean;)
 
 export-package:
-	python googlecode_upload.py -p crfpp -s crfpp      -u taku@chasen.org -w `cat ~/.googlecode_upload_password` CRF++-0.58.tar.gz
-	python googlecode_upload.py -p crfpp -s crfpp-win  -u taku@chasen.org -w `cat ~/.googlecode_upload_password` CRF++-0.58.zip
+	python googlecode_upload.py -p crfpp -s crfpp      -u taku@chasen.org -w `cat ~/.googlecode_upload_password` CRF++-0.59.tar.gz
+	python googlecode_upload.py -p crfpp -s crfpp-win  -u taku@chasen.org -w `cat ~/.googlecode_upload_password` CRF++-0.59.zip
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
