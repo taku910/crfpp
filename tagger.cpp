@@ -120,7 +120,12 @@ Tagger *ModelImpl::createTagger() const {
     return 0;
   }
   TaggerImpl *tagger = new TaggerImpl;
-  tagger->open(feature_index_.get(), nbest_, vlevel_);
+  try {
+    tagger->open(feature_index_.get(), nbest_, vlevel_);
+  } catch (...) {
+    delete tagger;
+    throw;
+  }
   return tagger;
 }
 
