@@ -1,0 +1,3 @@
+CRF++ is a simple, customizable, and open source implementation of Conditional Random Fields (CRFs) for segmenting/labeling sequential data. CRF++ is designed for generic purpose and will be applied to a variety of NLP tasks, such as Named Entity Recognition, Information Extraction and Text Chunking.
+
+http://crfpp.googlecode.com/svn/trunk/doc/index.html
