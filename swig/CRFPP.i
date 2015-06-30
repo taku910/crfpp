@@ -5,6 +5,7 @@
 %}
 
 %newobject surface;
+%newobject CRFPP::Model::createTagger;
 
 %exception {
   try { $action }
