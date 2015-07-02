@@ -18,7 +18,9 @@
 #include <cmath>
 
 #if defined(_WIN32) && !defined(__CYGWIN__)
-#define NOMINMAX
+#ifndef NOMINMAX
+#  define NOMINMAX
+#endif
 #include <windows.h>
 #endif
 
@@ -180,7 +182,7 @@ std::wstring Utf8ToWide(const std::string &input);
 std::string WideToUtf8(const std::wstring &input);
 #endif
 
-#if defined(_WIN32) && !defined(__CYGWIN__)
+#if defined(_WIN32) && !defined(__CYGWIN__) && !defined(__MINGW32__)
 #define WPATH(path) (CRFPP::Utf8ToWide(path).c_str())
 #else
 #define WPATH(path) (path)
@@ -210,10 +212,11 @@ class string_buffer: public std::string {
   string_buffer& operator<<(short int _n)          { _ITOA(_n); }
   string_buffer& operator<<(int _n)                { _ITOA(_n); }
   string_buffer& operator<<(long int _n)           { _ITOA(_n); }
+  string_buffer& operator<<(long long _n)          { _ITOA(_n); }
   string_buffer& operator<<(unsigned short int _n) { _UITOA(_n); }
   string_buffer& operator<<(unsigned int _n)       { _UITOA(_n); }
-  //  string_buffer& operator<<(unsigned long int _n)  { _UITOA(_n); }
-  string_buffer& operator<<(size_t _n)             { _UITOA(_n); }
+  string_buffer& operator<<(unsigned long int _n)  { _UITOA(_n); }
+  string_buffer& operator<<(unsigned long long _n) { _UITOA(_n); }
   string_buffer& operator<<(char _n) {
     push_back(_n);
     return *this;
