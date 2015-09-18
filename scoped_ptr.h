@@ -28,6 +28,11 @@ template<class T> class scoped_ptr {
     delete ptr_;
     ptr_ = p;
   }
+  T * release() {
+    T * ptr = ptr_;
+    ptr_ = 0;
+    return ptr;
+  }
   T & operator*() const   { return *ptr_; }
   T * operator->() const  { return ptr_;  }
   T * get() const         { return ptr_;  }

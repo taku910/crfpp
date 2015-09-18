@@ -119,9 +119,9 @@ Tagger *ModelImpl::createTagger() const {
   if (!feature_index_.get()) {
     return 0;
   }
-  TaggerImpl *tagger = new TaggerImpl;
+  scoped_ptr<TaggerImpl> tagger(new TaggerImpl);
   tagger->open(feature_index_.get(), nbest_, vlevel_);
-  return tagger;
+  return tagger.release();
 }
 
 bool TaggerImpl::open(FeatureIndex *feature_index,
