@@ -98,8 +98,8 @@ void Allocator::init() {
   path_freelist_.reset(new FreeList<Path> [thread_num_]);
   node_freelist_.reset(new FreeList<Node> [thread_num_]);
   for (size_t i = 0; i < thread_num_; ++i) {
-    path_freelist_[i].set_size(8192 * 16);
-    node_freelist_[i].set_size(8192);
+    path_freelist_[i].set_size(4096);
+    node_freelist_[i].set_size(256);
   }
 }
 
