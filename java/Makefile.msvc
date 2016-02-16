@@ -1,0 +1,25 @@
+TARGET=crfpp
+JAVAC=javac
+JAVA=java
+JAR=jar
+CXX=cl
+INC=/I"$(JAVA_HOME)\include\win32" /I"$(JAVA_HOME)\include" /I..
+OBJS=..\crf_learn.obj ..\encoder.obj ..\feature.obj ..\feature_cache.obj ..\feature_index.obj ..\lbfgs.obj ..\libcrfpp.obj ..\node.obj ..\param.obj ..\path.obj ..\tagger.obj
+
+PACKAGE=org\chasen\crfpp
+
+all:
+	set INCLUDE
+	$(CXX) $(INC) /LD $(TARGET)_wrap.cxx $(OBJS) /Fe$(TARGET).dll
+	$(JAVAC) $(PACKAGE)/*.java
+	$(JAVAC) test.java
+	$(JAR) cfv $(TARGET).jar $(PACKAGE)\*.class
+
+test:
+	$(JAVA) -Djava.library.path=. test
+
+clean:
+	del *.jar *.exp *.lib *.dll *.class $(PACKAGE)\*.class
+
+cleanall:
+	del $(TARGET).java *.cxx

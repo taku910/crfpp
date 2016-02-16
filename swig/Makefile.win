@@ -1,0 +1,36 @@
+SWIG = swig
+PREFIX = CRFPP
+
+all: perl ruby python java
+
+clean:
+	del *.pm *.cxx *.py
+
+perl:
+	$(SWIG) -perl -shadow -c++ $(PREFIX).i
+	move /Y $(PREFIX)_wrap.cxx ../perl
+	move /Y $(PREFIX).pm ../perl
+
+ruby:
+	$(SWIG) -ruby -c++ $(PREFIX).i
+	move /Y $(PREFIX)_wrap.cxx ../ruby/$(PREFIX)_wrap.cpp
+
+python:
+	$(SWIG) -python -shadow -c++ $(PREFIX).i
+	move /Y $(PREFIX)_wrap.cxx ../python
+	move /Y $(PREFIX).py ../python
+
+csharp:
+	$(SWIG) -csharp -namespace CRFPP -c++ $(PREFIX).i
+	move /Y $(PREFIX)_wrap.cxx ../csharp
+	move /Y *.cs ../csharp
+
+java:
+	$(SWIG) -java -package org.chasen.crfpp -c++ $(PREFIX).i
+	if not exist ../java/org/chasen/crfpp mkdir ../java/org/chasen/crfpp
+	move /Y $(PREFIX)_wrap.cxx ../java
+#	rm -fr exception.java SWIGTYPE_*.java
+	move /Y *.java ../java/org/chasen/crfpp
+
+
+
