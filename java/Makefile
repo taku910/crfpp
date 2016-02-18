@@ -3,7 +3,7 @@ JAVAC=javac
 JAVA=java
 JAR=jar
 CXX=c++
-INCLUDE=/usr/lib/jvm/java-7-openjdk-amd64/include
+INCLUDE=$(JAVA_HOME)/include
 
 PACKAGE=org/chasen/crfpp
 
