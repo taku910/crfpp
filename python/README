@@ -15,3 +15,12 @@ $Id: README,v 1.1.1.1 2005/12/03 14:18:50 taku-ku Exp $;
 2. How to use?
 
    see 'test.py' as a sample program.
+   
+   (I made it to build and install the python module, but an error occurred when executing "python test.py" saying like "can not import module _CRFPP".
+   I used pdb to run it step by step and found that libcrfpp.so is not found. So i found the lib in /usr/local/lib/ and added a config file pointing
+   to /usr/local/lib in dir /etc/ld.so.conf.d/ and ran the cmd ldconfig to load the new lib-dir-config. Then everything goes well now ☺
+   
+   my platform is centos 6.6 Final. 
+   I'd like it to be solved or awared by other NLP researchers. 
+   --Beijing, Bomb.J
+   )
