@@ -138,14 +138,48 @@ set(CRF_TEST_SOURCE_FILES "${CMAKE_CURRENT_LIST_DIR}/crf_test.cpp")
 list(FILTER CRFPP_SOURCE_FILES EXCLUDE REGEX "crf_.+\.cpp")
 list(REMOVE_DUPLICATES CRFPP_SOURCE_FILES)
 
-add_library(crfpp STATIC ${CRFPP_SOURCE_FILES})
+add_library(crfpp-static STATIC ${CRFPP_SOURCE_FILES})
+target_include_directories(crfpp-static PUBLIC ${CMAKE_CURRENT_LIST_DIR})
+target_link_libraries(crfpp-static ${EXTRA_LINKING_LIBRARIES})
+if(NOT WIN32)
+    set_target_properties(crfpp-static PROPERTIES OUTPUT_NAME "crfpp")
+endif()
+set_target_properties(crfpp-static PROPERTIES PUBLIC_HEADER "crfpp.h")
+
+add_library(crfpp SHARED ${CRFPP_SOURCE_FILES})
 target_include_directories(crfpp PUBLIC ${CMAKE_CURRENT_LIST_DIR})
 target_link_libraries(crfpp ${EXTRA_LINKING_LIBRARIES})
+set_target_properties(crfpp PROPERTIES PUBLIC_HEADER "crfpp.h")
 
 add_executable(crfpp_learn ${CRF_LEARN_SOURCE_FILES})
-target_link_libraries(crfpp_learn crfpp)
+target_link_libraries(crfpp_learn crfpp-static)
 
 add_executable(crfpp_test ${CRF_LEARN_SOURCE_FILES})
-target_link_libraries(crfpp_test crfpp)
+target_link_libraries(crfpp_test crfpp-static)
 
 add_subdirectory(sdk)
+
+# Installer
+
+install(TARGETS crfpp crfpp-static
+    RUNTIME
+        DESTINATION bin
+    LIBRARY
+        DESTINATION bin
+    RESOURCE
+        DESTINATION bin
+    LIBRARY
+        DESTINATION lib
+    PUBLIC_HEADER
+        DESTINATION include)
+
+if(WIN32)
+	if(CMAKE_SIZEOF_VOID_P MATCHES "8")
+		set(CPACK_WIX_PLATFORM "x64" CACHE STRING "CPACK_WIX_PLATFORM" FORCE)
+	else()
+		set(CPACK_WIX_PLATFORM "x86" CACHE STRING "CPACK_WIX_PLATFORM" FORCE)
+	endif()
+	set(CPACK_WIX_EXTENSIONS "WixUtilExtension" "WixUIExtension" "WixNetFxExtension" CACHE STRING "CPACK_WIX_EXTENSIONS" FORCE)
+else()
+    include(GNUInstallDirs)
+endif()
