@@ -170,6 +170,8 @@ install(TARGETS crfpp crfpp-static
         DESTINATION bin
     LIBRARY
         DESTINATION lib
+    ARCHIVE
+        DESTINATION lib
     PUBLIC_HEADER
         DESTINATION include)
 
