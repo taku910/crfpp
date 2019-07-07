@@ -17,7 +17,7 @@
 #endif
 #endif
 
-#if defined HAVE_PTHREAD_H
+#if HAVE_PTHREAD_H
 #define CRFPP_USE_THREAD 1
 #endif
 
