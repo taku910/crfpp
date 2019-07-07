@@ -10,5 +10,5 @@ file(GLOB CRFPP_SDK_EXAMPLE_SOURCE_FILES
 	${CMAKE_CURRENT_LIST_DIR}/*.c
     ${CMAKE_CURRENT_LIST_DIR}/*.cpp)
 
-add_executable(crfpp_sdk_example ${CRFPP_SDK_EXAMPLE_SOURCE_FILES})
-target_link_libraries(crfpp_sdk_example crfpp)
+add_executable(crf_sdk_example ${CRFPP_SDK_EXAMPLE_SOURCE_FILES})
+target_link_libraries(crf_sdk_example crfpp)

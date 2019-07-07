@@ -173,11 +173,11 @@ target_include_directories(crfpp PUBLIC ${CMAKE_CURRENT_LIST_DIR})
 target_link_libraries(crfpp ${EXTRA_LINKING_LIBRARIES})
 set_target_properties(crfpp PROPERTIES PUBLIC_HEADER "crfpp.h")
 
-add_executable(crfpp_learn ${CRF_LEARN_SOURCE_FILES})
-target_link_libraries(crfpp_learn crfpp-static)
+add_executable(crf_learn ${CRF_LEARN_SOURCE_FILES})
+target_link_libraries(crf_learn crfpp-static)
 
-add_executable(crfpp_test ${CRF_LEARN_SOURCE_FILES})
-target_link_libraries(crfpp_test crfpp-static)
+add_executable(crf_test ${CRF_LEARN_SOURCE_FILES})
+target_link_libraries(crf_test crfpp-static)
 
 add_subdirectory(sdk)
 
