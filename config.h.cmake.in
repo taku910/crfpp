@@ -1,5 +1,7 @@
 /* config.h.  Generated from config.h.in by configure.  */
 /* config.h.in.  Generated from configure.in by autoheader.  */
+#ifndef CONFIG_H_
+#define CONFIG_H_
 
 /* Define to 1 if you have the <ctype.h> header file. */
 #cmakedefine HAVE_CTYPE_H
@@ -64,8 +66,25 @@
 /* Define to 1 if you have the <unistd.h> header file. */
 #cmakedefine HAVE_UNISTD_H
 
-/* */
+/* Define to 1 if you have the ANSI C header files. */
+#ifndef STDC_HEADERS
+#cmakedefine STDC_HEADERS
+#endif
+
+/* Define to 1 if __thread or __declspec(thread) compiles */
 #cmakedefine HAVE_TLS_KEYWORD
+
+/* Define to 1 if should check compatibility to size_t */
+#cmakedefine CHECK_SIZE_T_COMPATIBILITY
+
+/* Define to 1 if sizeof(size_t) == sizeof(unsigned short int) */
+#cmakedefine UNSIGNED_SHORT_INT_COMPATIBLE_TO_SIZE_T
+
+/* Define to 1 if sizeof(size_t) == sizeof(unsigned int) */
+#cmakedefine UNSIGNED_INT_COMPATIBLE_TO_SIZE_T
+
+/* Define to 1 if sizeof(size_t) == sizeof(unsigned long int) */
+#cmakedefine UNSIGNED_LONG_INT_COMPATIBLE_TO_SIZE_T
 
 /* */
 #cmakedefine HAVE_SYS_CONF_SC_NPROCESSORS_CONF
@@ -95,11 +114,7 @@
 /* Define to the version of this package. */
 #define PACKAGE_VERSION "@CRF_PACKAGE_NAME@"
 
-/* Define to 1 if you have the ANSI C header files. */
-/* #undef STDC_HEADERS */
-
 /* Version number of package */
 #define VERSION "@CRF_PACKAGE_VERSION@"
 
-/* Define to `unsigned int' if <sys/types.h> does not define. */
-/* #undef size_t */
+#endif

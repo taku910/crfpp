@@ -210,9 +210,15 @@ class string_buffer: public std::string {
   string_buffer& operator<<(short int _n)          { _ITOA(_n); }
   string_buffer& operator<<(int _n)                { _ITOA(_n); }
   string_buffer& operator<<(long int _n)           { _ITOA(_n); }
+#if defined(CHECK_SIZE_T_COMPATIBILITY) && defined(UNSIGNED_SHORT_INT_COMPATIBLE_TO_SIZE_T)
   string_buffer& operator<<(unsigned short int _n) { _UITOA(_n); }
+#endif
+#if defined(CHECK_SIZE_T_COMPATIBILITY) && defined(UNSIGNED_INT_COMPATIBLE_TO_SIZE_T)
   string_buffer& operator<<(unsigned int _n)       { _UITOA(_n); }
-  //  string_buffer& operator<<(unsigned long int _n)  { _UITOA(_n); }
+#endif
+#if defined(CHECK_SIZE_T_COMPATIBILITY) && defined(UNSIGNED_LONG_INT_COMPATIBLE_TO_SIZE_T)
+  string_buffer& operator<<(unsigned long int _n)  { _UITOA(_n); }
+#endif
   string_buffer& operator<<(size_t _n)             { _UITOA(_n); }
   string_buffer& operator<<(char _n) {
     push_back(_n);

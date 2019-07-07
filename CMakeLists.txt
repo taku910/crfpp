@@ -17,7 +17,9 @@ endif()
 include(CheckIncludeFile)
 include(CheckIncludeFiles)
 include(CheckFunctionExists)
+include(CheckSymbolExists)
 include(CheckCSourceCompiles)
+include(CheckCXXSourceCompiles)
 include(FindLibM)
 
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
@@ -73,9 +75,23 @@ foreach(keyword "__thread" "__declspec(thread)")
         int main() { return 0; }"
         HAVE_TLS_${keyword})
     if(HAVE_TLS_${keyword})
-        set(HAVE_TLS_KEYWORD ${keyword})
+        set(HAVE_TLS_KEYWORD 1)
         break()
     endif()
+endforeach()
+
+set(CHECK_SIZE_T_COMPATIBILITY 1 CACHE STRING "CHECK_SIZE_T_COMPATIBILITY" FORCE)
+foreach(type "unsigned short int" "unsigned int" "unsigned long int")
+    string(REGEX REPLACE "[^0-9a-zA-Z_]" "_" TYPE_VAR ${type})
+    string(REGEX REPLACE "^[^a-zA-Z_]+" "" TYPE_VAR ${TYPE_VAR})
+    string(TOUPPER ${TYPE_VAR} TYPE_VAR)
+    check_cxx_source_compiles(
+        "#include <cstddef>
+        void foo(size_t x) {}
+        void foo(${type} x) {}
+        int main() { return 0; }"
+        ${TYPE_VAR}_COMPATIBLE_TO_SIZE_T)
+    message(STATUS "Checking if '${type}' is compatible with 'size_t': ${TYPE_VAR} [${${TYPE_VAR}_COMPATIBLE_TO_SIZE_T}]")
 endforeach()
 
 CHECK_INCLUDE_FILES("stdint.h;stddef.h" STDC_HEADERS)
@@ -99,6 +115,8 @@ CHECK_INCLUDE_FILE("pthread.h" HAVE_PTHREAD_H)
 
 check_function_exists("getpagesize" HAVE_GETPAGESIZE)
 check_function_exists("mmap" HAVE_MMAP)
+
+check_symbol_exists("_SC_NPROCESSORS_CONF" "unistd.h" HAVE_SYS_CONF_SC_NPROCESSORS_CONF)
 
 set(EXTRA_LINKING_LIBRARIES "")
 
