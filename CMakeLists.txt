@@ -180,6 +180,7 @@ add_executable(crf_test ${CRF_LEARN_SOURCE_FILES})
 target_link_libraries(crf_test crfpp-static)
 
 add_subdirectory(sdk)
+add_subdirectory(example)
 
 # Installer
 
