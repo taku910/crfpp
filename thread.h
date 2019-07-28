@@ -9,16 +9,13 @@
 #define CRFPP_THREAD_H_
 
 #ifdef HAVE_PTHREAD_H
+#define CRFPP_USE_THREAD 1
 #include <pthread.h>
 #else
 #ifdef _WIN32
 #include <windows.h>
 #include <process.h>
 #endif
-#endif
-
-#if defined HAVE_PTHREAD_H
-#define CRFPP_USE_THREAD 1
 #endif
 
 #if(defined(_WIN32) && !defined (__CYGWIN__))

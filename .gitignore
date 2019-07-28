@@ -1,0 +1,5 @@
+obj/
+build/
+build.*/
+.vscode/
+config.log
