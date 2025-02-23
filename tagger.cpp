@@ -426,7 +426,7 @@ bool TaggerImpl::initNbest() {
 }
 
 bool TaggerImpl::next() {
-  while (!agenda_->empty()) {
+  while (agenda_.get() && !agenda_->empty()) {
     QueueElement *top = agenda_->top();
     agenda_->pop();
     Node *rnode = top->node;
